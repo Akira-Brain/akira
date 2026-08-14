@@ -1,0 +1,34 @@
+# company.yaml - identiteit en kernfeiten van het atelier
+# Zone: HOOG risico. AI wijzigt dit nooit rechtstreeks, alleen via de canon-queue.
+#
+# INVULLEN TIJDENS DE BRAINDUMP-SESSIE. Niets hieronder is ingevuld met aannames:
+# verzonnen bedrijfsfeiten zijn erger dan lege velden.
+
+company: haus-von-feb
+display_name: "Haus von FEB"
+tenant_type: company
+
+# --- entiteiten ---
+entities: []
+# Voorbeeld van de vorm (niet ingevuld, want niet geverifieerd):
+#   - name: "..."
+#     role: "..."          # styling-atelier | personal brand | ...
+#     notes: "..."
+
+# --- mensen ---
+founders: [farah, tore]
+# farah: zaakvoerder creatief
+# tore: zaakvoerder operations
+team: []                     # vul aan vanuit people/
+
+# --- wat we doen ---
+services: []
+# Bijvoorbeeld: red carpet styling, tour styling, editorial, brand deals,
+# influencer marketing. Invullen wat werkelijk aangeboden wordt.
+
+revenue_streams: []
+# Uit de spraaknotitie kwam naar voren: Farah als personal brand en brand deals
+# zijn een opkomende stroom. Bevestigen voordat dit hier staat.
+
+# --- werkritme ---
+review_day: null             # welke dag draait de weekly review

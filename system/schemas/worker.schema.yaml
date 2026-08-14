@@ -1,0 +1,32 @@
+# worker.schema.yaml - SLAPEND. Niet in gebruik in V0.x.
+# Ligt hier klaar conform Fase 2 hoofdstuk I; activatie pas in rollout-fase 6.
+#
+# Waarom nog niet: bij twee gebruikers en vijf skills is een workerlaag pure overhead.
+# Tenant + skill bepalen samen al welke context geladen wordt. Een worker toevoegen
+# zou een registry, scoperegels en onderhoud introduceren zonder dat iets beter wordt.
+#
+# Wanneer wel relevant:
+#   (a) Farah's structurele aansluiting - een meeting-processor met vaste, beperkte rechten
+#   (b) terugkerende autonome runs - bijvoorbeeld de weekly review op schema
+#   (c) klant-tenants met eigen toegangsregels
+
+worker: meeting-processor
+role: "verwerkt captures van Farah naar gerouteerde signalen"
+tenant: company
+skills: [meeting-processing, project-update]
+
+context:
+  load:                         # wat deze worker mag lezen
+    - company/BOARD.md
+    - company/projects/active/
+    - company/people/
+  exclude:                      # wat expliciet buiten bereik blijft
+    - company/clients/*/vault
+    - personal/
+
+write_access:                   # zones uit AGENTS.md, nooit ruimer dan nodig
+  - company/inbox/
+  - company/projects/active/*/journal/
+
+verification:
+  requires_human_review: true   # output gaat langs een mens voor routering definitief is

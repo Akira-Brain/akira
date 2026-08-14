@@ -1,0 +1,23 @@
+# task.schema.yaml - taken
+# Plek: GEEN eigen bestanden. Taken leven als regels in project.yaml (beslissing D8).
+# Zone: laag risico - AI mag taken vrij aanmaken, afvinken en herformuleren.
+
+# Vorm binnen project.yaml:
+tasks:
+  - task: "Accessoires sourcen voor shoot"
+    owner: luna                 # slug uit people/, of tore | farah
+    due: 2026-08-20             # null mag
+    status: open                # open | doing | done | dropped
+    needs_decision: false       # true = wacht op een menselijke beslissing
+
+# Waarom geen GitHub Issues, Linear of Notion (D8):
+# taken zijn hier vrijwel altijd projectgebonden. Bij het project bewaren betekent
+# een substraat, een schrijfplek, en aggregatie zonder integratie.
+#
+# De vragen die dit moet beantwoorden, allemaal als filter over alle project.yaml's:
+#   "Wat moet Luna doen?"                 -> owner: luna, status: open
+#   "Wat wacht op mijn beslissing?"       -> needs_decision: true
+#   "Welke projecten hebben overdue?"     -> due < vandaag, status: open
+#
+# Bekende zwakte: geen notificaties, geen mobiele checkbox. Opgevangen door de
+# daily brief. Migratiepad naar Issues blijft open omdat taken al gestructureerd zijn.

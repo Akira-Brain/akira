@@ -1,0 +1,131 @@
+# OpenAPI-schema voor de Custom GPT Action "Haus von FEB - Capture"
+# Plak dit in ChatGPT bij Configure -> Actions -> Schema.
+#
+# VOOR GEBRUIK: vervang OWNER hieronder (3 plekken) door de GitHub-gebruikersnaam
+# of organisatienaam die eigenaar is van de repo. Verder niets wijzigen.
+#
+# Waarom Issues en geen bestanden: de GitHub Contents API verlangt base64-gecodeerde
+# inhoud. Een taalmodel dat lange tekst naar base64 moet omzetten maakt fouten, en
+# een stille coderingsfout betekent een verloren capture. De Issues API accepteert
+# platte tekst. Bijkomend voordeel: het token hoeft dan helemaal geen schrijfrecht
+# op bestanden te hebben.
+
+openapi: 3.1.0
+
+info:
+  title: Haus von FEB - Capture
+  description: >
+    Schrijft captures weg als GitHub Issue in de Haus von FEB OS-repo en leest het
+    BOARD voor de daily brief. Kan geen bestanden wijzigen.
+  version: 1.0.0
+
+servers:
+  - url: https://api.github.com
+
+paths:
+  /repos/OWNER/haus-von-feb-os/issues:
+    post:
+      operationId: createCapture
+      summary: Nieuwe capture wegschrijven
+      description: >
+        Maakt een nieuwe capture aan als GitHub Issue met het label "capture".
+        Gebruik dit voor elke spraakdump, meetingnotitie of losse inval.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title, body, labels]
+              properties:
+                title:
+                  type: string
+                  description: >
+                    Korte omschrijving, formaat "JJJJ-MM-DD - onderwerp".
+                    Bijvoorbeeld "2026-08-14 - gesprek Luna over shoot".
+                body:
+                  type: string
+                  description: >
+                    Het volledige capture-blok in Markdown, met de secties
+                    Ruw, Signalen en Routering.
+                labels:
+                  type: array
+                  description: Altijd ["capture"].
+                  items:
+                    type: string
+      responses:
+        "201":
+          description: Capture aangemaakt
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  number:
+                    type: integer
+                  html_url:
+                    type: string
+
+    get:
+      operationId: listCaptures
+      summary: Openstaande captures bekijken
+      description: >
+        Haalt de nog niet gerouteerde captures op. Gebruik dit als iemand vraagt
+        wat er nog open staat of wat er vandaag is ingesproken.
+      parameters:
+        - name: state
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [open]
+        - name: labels
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [capture]
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Lijst met openstaande captures
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    number:
+                      type: integer
+                    title:
+                      type: string
+                    created_at:
+                      type: string
+
+  /repos/OWNER/haus-von-feb-os/contents/company/BOARD.md:
+    get:
+      operationId: getBoard
+      summary: Het BOARD lezen voor de daily brief
+      description: >
+        Haalt het actuele projectoverzicht op als platte tekst. Stuur de Accept-header
+        altijd als application/vnd.github.raw, anders komt de inhoud base64-gecodeerd
+        terug en is ze onbruikbaar.
+      parameters:
+        - name: Accept
+          in: header
+          required: true
+          schema:
+            type: string
+            enum: ["application/vnd.github.raw"]
+      responses:
+        "200":
+          description: De inhoud van BOARD.md als platte tekst
+          content:
+            text/plain:
+              schema:
+                type: string

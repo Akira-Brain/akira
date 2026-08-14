@@ -1,0 +1,18 @@
+# person.schema.yaml - mensen: team, stagiaires, externe contacten
+# Plek: {tenant}/people/{slug}.yaml
+# Zone: midden risico - AI mag notes appenden, gelabeld en gedateerd.
+
+name: Toos Franke
+slug: toos-franke
+type: external                  # internal | external
+role: "management Selah Sue"
+organization: "..."
+channel_preference: email       # email | whatsapp | telefoon | slack
+email: "..."                    # zakelijk contact mag; privenummers -> vault
+tags: [muziek, management]
+
+notes:                          # append-only, nieuwste eerst
+  - {date: 2026-08-14, text: "Reageert snel, beslist niet zelf over budget."}
+
+# Waarom append-only: een mens verandert, maar de observatie van toen blijft nuttig.
+# Corrigeren doe je door een nieuwe note toe te voegen, niet door de oude te wissen.

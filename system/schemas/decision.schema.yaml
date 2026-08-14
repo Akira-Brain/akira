@@ -1,0 +1,18 @@
+# decision.schema.yaml - beslissingsregister
+# Plek: {tenant}/decisions/{jaar}/D-{jaar}-{nr}.md (frontmatter + proza)
+# Zone: laag risico voor gewone beslissingen.
+#       HOOG risico als scope canon raakt: dan verplicht via canon-queue.
+
+id: D-2026-014
+date: 2026-08-14
+decision: "Red carpet basisprijs naar 1400"
+made_by: [tore, farah]          # wie besliste werkelijk
+scope: pricing                  # operations | pricing | brand | commercial | system | personal
+supersedes: D-2025-031          # null als er geen voorganger is
+evidence:                       # projecten of bestanden die de beslissing dragen
+  - projects/archive/2026/as-adventure-second-life
+status: approved                # proposed | approved | rejected
+canon_impact: true              # true -> moet ook door de canon-queue
+
+# Body: context en rationale in 3-6 zinnen. Wat gaf de doorslag.
+# Een beslissing zonder rationale is over zes maanden waardeloos.

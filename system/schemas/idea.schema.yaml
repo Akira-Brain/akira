@@ -1,0 +1,16 @@
+# idea.schema.yaml - de parkeerplaats
+# Plek: {tenant}/ideas/{slug}.md  (frontmatter + een alinea proza)
+# Zone: laag risico - AI mag ideeen vrij vastleggen.
+# Doel: invallen mogen nooit verloren gaan, maar hoeven ook geen project te worden.
+
+idea: bridal-styling-gids
+title: "Digitale bridal styling gids"
+tenant: company
+status: good-ideas          # priority | good-ideas | someday | rejected | promoted
+captured: 2026-08-14
+source: tore-voice          # tore-voice | farah-voice | meeting | sessie | extern
+promoted_to: null           # bij status promoted: de project-slug
+
+# Body (na de frontmatter):
+# Een alinea. Wat is het idee en waarom zou het waarde hebben.
+# Promotie naar project = nieuwe projectmap aanmaken + hier status: promoted zetten.

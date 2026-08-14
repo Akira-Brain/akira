@@ -1,0 +1,19 @@
+# client.schema.yaml - klantregister
+# Plek: company/clients/{slug}/client.yaml
+# Zone: midden risico - AI mag notes toevoegen, nooit gevoelige inhoud.
+# LET OP: bij sensitivity high staat in de repo alleen de slug en initialen.
+# De koppeling slug -> echte identiteit leeft in de Drive-vault.
+
+client: selah-sue
+display_name: "S.S."            # pseudoniem bij hoge gevoeligheid
+sensitivity: high               # normal | high
+type: artist                    # artist | brand | private | agency
+since: 2026
+relationship_owner: farah
+projects: [selah-sue-tour-styling]
+contacts: [toos-franke]         # verwijst naar people/{slug}.yaml
+vault: {drive_url: "..."}       # map met contracten, maten, persoonlijke info
+
+notes:                          # append-only, nieuwste eerst, zakelijk van aard
+  - {date: 2026-08-14, text: "Beslist zelf niet over budget, management wel."}
+# NOOIT in notes: maten, gezondheid, privesituatie, adressen, privenummers.

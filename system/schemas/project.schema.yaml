@@ -1,0 +1,46 @@
+# project.schema.yaml - het belangrijkste bestand van het systeem
+# Plek: {tenant}/projects/active/{slug}/project.yaml
+# Bron van waarheid voor status en prioriteit. BOARD.md wordt hieruit gegenereerd.
+# Zone: laag risico - AI mag status, next_step en tasks vrij bijwerken.
+
+# --- kernvelden (verplicht) ---
+project: selah-sue-tour-styling        # slug, gelijk aan de mapnaam
+title: "Selah Sue - Europese tour styling"
+tenant: company                        # company | tore | farah | client:{slug}
+status: active                         # active | waiting | blocked | parked | done | archived
+priority: now                          # now | next | later | parked
+next_step: "Feedback Toos verwerken en fittingdatum voorstellen"
+next_step_owner: tore                  # wie is aan zet
+updated: 2026-08-14                    # elke sessie die iets wijzigt, zet deze datum
+
+# --- context (optioneel) ---
+client: selah-sue                      # verwijst naar clients/{slug}/client.yaml
+people: [toos-franke]                  # verwijst naar people/{slug}.yaml
+waiting_for: "bevestiging management over tourdata"   # voedt 'clients waiting' in de brief
+deadline: 2026-09-05
+tags: [styling, tour, muziek]
+
+# --- commercieel (optioneel) ---
+# Bedragen mogen hier. Persoonsgevoelige of contractuele details nooit.
+commercial:
+  quoted: null
+  accepted: null
+  status: scoping                      # scoping | quoted | negotiating | won | lost
+
+# --- taken (D8: taken leven hier, niet in GitHub Issues) ---
+tasks:
+  - task: "Accessoires sourcen voor shoot"
+    owner: luna
+    due: 2026-08-20
+    status: open                       # open | doing | done | dropped
+    needs_decision: false
+  - task: "Prijsbeslissing tweede fitting"
+    owner: farah
+    due: null
+    status: open
+    needs_decision: true               # voedt 'wat wacht op mijn beslissing'
+
+# --- verwijzingen (inhoud blijft in Drive) ---
+files:
+  moodboard: {drive_url: "...", status: draft}
+  offerte: {drive_url: "...", status: sent}

@@ -1,0 +1,30 @@
+# drive-map.yaml - verwijzingen naar Google Drive
+# Zone: laag risico.
+#
+# HARDE REGEL: de repo dupliceert nooit Drive-inhoud. Hij verwijst en registreert status.
+# De AI weet hierdoor welk document bestaat, waar het staat, wat de status is en
+# waarvoor het dient, zonder de inhoud in het bedrijfsgeheugen te trekken.
+#
+# Schema: system/schemas/file-reference.schema.yaml
+
+files: []
+
+# Vorm:
+# files:
+#   - ref: {korte-slug}
+#     drive_url: "..."
+#     kind: offerte            # offerte | contract | deck | sheet | asset | brief | vault
+#     project: {project-slug}
+#     status: sent             # draft | sent | signed | final | archived
+#     owner: tore
+#     note: "..."
+
+# --- vaults ---
+# Mappen met gevoelig materiaal. Hier staat ALLEEN de verwijzing, nooit de inhoud
+# en nooit een samenvatting van de inhoud. Zie policy sensitive-data-to-vault.
+
+vaults: []
+# vaults:
+#   - client: {slug}
+#     drive_url: "..."
+#     contains: "contracten, maten, persoonlijke contactgegevens"

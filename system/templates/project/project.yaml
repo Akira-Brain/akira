@@ -1,0 +1,26 @@
+# Template projectmap. Kopieer deze map naar {tenant}/projects/active/{slug}/
+# en vul in. Verwijder velden die niet van toepassing zijn.
+
+project: "{slug}"
+title: "{titel}"
+tenant: company                # company | tore | farah
+status: active                 # active | waiting | blocked | parked | done | archived
+priority: next                 # now | next | later | parked
+next_step: "{de eerstvolgende concrete handeling}"
+next_step_owner: tore
+updated: 2026-08-14
+
+client: null
+people: []
+waiting_for: null
+deadline: null
+tags: []
+
+commercial:
+  quoted: null
+  accepted: null
+  status: scoping
+
+tasks: []
+
+files: {}

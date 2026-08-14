@@ -1,0 +1,18 @@
+# file-reference.schema.yaml - verwijzingen naar Drive-documenten
+# Plek: integrations/drive-map.yaml (en het files:-blok in project.yaml)
+# Zone: laag risico.
+# HARDE REGEL: de repo dupliceert nooit Drive-inhoud. Hij verwijst en registreert status.
+
+- ref: selah-sue-offerte-v2
+  drive_url: "..."
+  kind: offerte                 # offerte | contract | deck | sheet | asset | brief | vault
+  project: selah-sue-tour-styling
+  status: sent                  # draft | sent | signed | final | archived
+  owner: tore
+  note: "definitieve versie, verstuurd 14/8"
+
+# Waarom pointers en geen kopieen:
+# de AI moet weten welk document bestaat, waar het staat, wat de status is en
+# waarvoor het dient. De inhoud zelf hoort in Drive, waar mensen hem ondertekenen,
+# becommentarieren en delen. Dupliceren levert twee waarheden op, en de tweede
+# is altijd verouderd.

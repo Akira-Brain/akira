@@ -1,0 +1,22 @@
+# learning.schema.yaml - learnings en hypotheses
+# Plek: {tenant}/working/learnings/{slug}.md
+# Zone: midden risico - AI mag schrijven, ALTIJD met status-frontmatter.
+# Dit is de motor van 'elk project laat het bedrijf slimmer achter'.
+
+type: learning
+status: hypothesis              # hypothesis | learning | proposed
+                                # daarna: canon (verhuist naar knowledge/) of rejected
+statement: "Sourcing wordt structureel ~30% onderschat bij eerste opdrachten"
+evidence:                       # projecten die de stelling steunen
+  - selah-sue-tour-styling
+counter_evidence: []            # net zo belangrijk: wat spreekt het tegen
+captured: 2026-08-14
+review_after: 3                 # heroverwegen na N nieuwe datapunten
+
+# Statusregels:
+# hypothesis -> een observatie, nog geen patroon. AI mag dit vrij aanmaken.
+# learning   -> patroon met meerdere evidence-verwijzingen.
+# proposed   -> klaar voor de canon-queue. AI mag dit ALLEEN zetten als er
+#               daadwerkelijk evidence-verwijzingen staan.
+#
+# Body: wat is er gezien, wat zou het verklaren, wat zou het weerleggen.

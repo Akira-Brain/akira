@@ -1,0 +1,17 @@
+# Nooit committen - gevoelig materiaal hoort in de Drive-vault
+*.secret.*
+*.key
+*.pem
+.env
+.env.*
+
+# Lokale werkbestanden
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.vscode/
+.idea/
+
+# Scratch: lokaal denkwerk dat geen bedrijfsgeheugen is
+scratch/

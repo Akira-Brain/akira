@@ -1,0 +1,25 @@
+# offer.schema.yaml - offertes
+# Plek: {tenant}/working/offers/{slug}.yaml of in de projectmap
+# Zone: midden risico - AI mag drafts maken, altijd met status draft.
+# Het uiteindelijke document (PDF, Doc) leeft in Drive; hier staat de structuur.
+
+offer: selah-sue-tour-2026
+project: selah-sue-tour-styling
+version: 2
+date: 2026-08-14
+status: draft                   # draft | sent | accepted | rejected | expired
+
+scope:
+  looks: 6
+  fittings: 2
+  sourcing: true
+  travel: separate              # separate | included
+
+pricing:
+  proposed: 4800
+  canon_reference: knowledge/pricing/tour-styling.md
+  deviation_from_canon: "+10% wegens dubbele fitting"
+  # deviation_from_canon is VERPLICHT zodra proposed afwijkt van de canon.
+  # Wijkt de AI af zonder reden op te geven, dan is de offerte ongeldig.
+
+document: {drive_url: "..."}

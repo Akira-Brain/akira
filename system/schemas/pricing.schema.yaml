@@ -1,0 +1,19 @@
+# pricing.schema.yaml - pricing canon
+# Plek: company/knowledge/pricing/{onderwerp}.md (frontmatter + waarom-proza)
+# Zone: HOOG risico. AI wijzigt dit NOOIT rechtstreeks, alleen via canon-queue.
+# Een bestand per onderwerp, niet een grote pricing.md: kleine diffs, gericht laden.
+
+type: pricing-canon
+status: canonical
+current:
+  red_carpet_base: 1400
+  first_time_client_surcharge: "analyse + setup apart offreren"
+history:                        # oude waarden blijven staan, altijd met verwijzing
+  - {value: 1100, until: 2026-08-14, superseded_by: D-2026-014}
+approved_by: [tore, farah]
+updated: 2026-08-14
+
+# Body: ## Waarom
+# De redenering achter de prijs. Dit is het deel dat de AI nodig heeft om een
+# afwijking te kunnen verdedigen of af te raden. Een getal zonder rationale
+# leidt tot verkeerd toegepaste prijzen.
