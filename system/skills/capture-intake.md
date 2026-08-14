@@ -12,7 +12,7 @@ Draai dit dagelijks als er captures zijn, en in elk geval bij de weekly review.
 
 ## Input
 
-Openstaande issues met label `capture` in `haus-von-feb-os`. Ophalen via de GitHub-
+Openstaande issues met label `capture` in `akira`. Ophalen via de GitHub-
 connector of `gh issue list --label capture --state open`.
 
 ## Stappen

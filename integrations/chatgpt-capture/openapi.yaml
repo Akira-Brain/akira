@@ -1,4 +1,4 @@
-# OpenAPI-schema voor de Custom GPT Action "Haus von FEB - Capture"
+# OpenAPI-schema voor de Custom GPT Action "Akira - Capture"
 # Plak dit in ChatGPT bij Configure -> Actions -> Schema.
 #
 # VOOR GEBRUIK: vervang OWNER hieronder (3 plekken) door de GitHub-gebruikersnaam
@@ -13,9 +13,9 @@
 openapi: 3.1.0
 
 info:
-  title: Haus von FEB - Capture
+  title: Akira - Capture
   description: >
-    Schrijft captures weg als GitHub Issue in de Haus von FEB OS-repo en leest het
+    Schrijft captures weg als GitHub Issue in de Akira-repo en leest het
     BOARD voor de daily brief. Kan geen bestanden wijzigen.
   version: 1.0.0
 
@@ -23,7 +23,7 @@ servers:
   - url: https://api.github.com
 
 paths:
-  /repos/OWNER/haus-von-feb-os/issues:
+  /repos/OWNER/akira/issues:
     post:
       operationId: createCapture
       summary: Nieuwe capture wegschrijven
@@ -107,7 +107,7 @@ paths:
                     created_at:
                       type: string
 
-  /repos/OWNER/haus-von-feb-os/contents/company/BOARD.md:
+  /repos/OWNER/akira/contents/company/BOARD.md:
     get:
       operationId: getBoard
       summary: Het BOARD lezen voor de daily brief

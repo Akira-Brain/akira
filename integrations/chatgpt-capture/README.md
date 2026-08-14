@@ -5,7 +5,7 @@ Versie 0.1 - 2026-08-14. Dit is pad A uit het ontwerp, in de vorm die vandaag we
 ## Wat dit is
 
 Farah praat met een Custom GPT in ChatGPT. Die GPT schrijft elke capture weg als
-GitHub Issue in `haus-von-feb-os`, met het label `capture`. Tore's Claude leest die
+GitHub Issue in `akira`, met het label `capture`. Tore's Claude leest die
 issues, routeert de signalen naar de juiste plek in de repo en sluit het issue.
 
 ```
@@ -40,7 +40,7 @@ Ongeveer twintig minuten. Stap 1 en 2 doet Tore, stap 3 en 4 doen jullie samen.
 
 ### 1. Repo klaarzetten
 
-De repo `haus-von-feb-os` moet op GitHub staan (privé) en er moet een label `capture`
+De repo `akira` moet op GitHub staan (privé) en er moet een label `capture`
 bestaan. Labels maak je aan bij Issues -> Labels -> New label. Maak hem aan voordat je
 test: een issue met een onbekend label kan mislukken.
 
@@ -56,7 +56,7 @@ tokens -> Generate new token.
 | Token name | `farah-capture-gpt` |
 | Expiration | 90 dagen (zet een herinnering in de agenda) |
 | Resource owner | het account dat eigenaar is van de repo |
-| Repository access | Only select repositories -> **alleen** `haus-von-feb-os` |
+| Repository access | Only select repositories -> **alleen** `akira` |
 | Permissions -> Issues | **Read and write** |
 | Permissions -> Contents | **Read-only** (alleen nodig voor de daily brief) |
 | Permissions -> Metadata | Read-only (zet GitHub zelf aan) |

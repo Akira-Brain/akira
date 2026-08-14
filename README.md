@@ -1,4 +1,6 @@
-# Haus von FEB AI OS
+# Akira
+
+*Het AI operating system van Haus von FEB.*
 
 Versie 0.1 - 2026-08-14
 

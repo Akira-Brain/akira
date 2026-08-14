@@ -1,4 +1,4 @@
-# AGENTS.md - charter Haus von FEB AI OS
+# AGENTS.md - charter Akira
 
 Versie 0.1 - 2026-08-14. Dit bestand wordt door elke AI-sessie als eerste gelezen.
 Houd het onder ~100 regels. Alles wat hier niet staat, wordt on demand geladen.
