@@ -76,8 +76,8 @@ In ChatGPT: linksboven -> GPTs -> Create -> Configure.
 - **Capabilities**: zet Web Browsing, DALL-E en Code Interpreter uit. Niet nodig, en
   minder oppervlak.
 - **Actions** -> Create new action:
-  - **Schema**: plak `openapi.yaml`, maar vervang eerst `OWNER` (drie plekken) door de
-    GitHub-naam die eigenaar is van de repo.
+  - **Schema**: plak `openapi.yaml` ongewijzigd. De paden wijzen al naar
+    `github.com/V-iices/akira`.
   - **Authentication**: API Key, Auth Type **Bearer**, en plak het token uit stap 2.
 - Bewaren, en delen met Farah (Only people with a link, of via je workspace).
 

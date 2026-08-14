@@ -1,8 +1,12 @@
 # OpenAPI-schema voor de Custom GPT Action "Akira - Capture"
 # Plak dit in ChatGPT bij Configure -> Actions -> Schema.
 #
-# VOOR GEBRUIK: vervang OWNER hieronder (3 plekken) door de GitHub-gebruikersnaam
-# of organisatienaam die eigenaar is van de repo. Verder niets wijzigen.
+# Klaar voor gebruik: plak dit ongewijzigd. De paden wijzen naar
+# github.com/V-iices/akira.
+#
+# Verhuist de repo ooit naar een organisatie, pas dan de twee paden hieronder aan.
+# Doe je dat niet, dan faalt createCapture met een 404 en lijkt het alsof de GPT
+# gewoon niets doet.
 #
 # Waarom Issues en geen bestanden: de GitHub Contents API verlangt base64-gecodeerde
 # inhoud. Een taalmodel dat lange tekst naar base64 moet omzetten maakt fouten, en
@@ -23,7 +27,7 @@ servers:
   - url: https://api.github.com
 
 paths:
-  /repos/OWNER/akira/issues:
+  /repos/V-iices/akira/issues:
     post:
       operationId: createCapture
       summary: Nieuwe capture wegschrijven
@@ -107,7 +111,7 @@ paths:
                     created_at:
                       type: string
 
-  /repos/OWNER/akira/contents/company/BOARD.md:
+  /repos/V-iices/akira/contents/company/BOARD.md:
     get:
       operationId: getBoard
       summary: Het BOARD lezen voor de daily brief
