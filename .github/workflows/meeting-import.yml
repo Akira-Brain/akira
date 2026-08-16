@@ -1,0 +1,93 @@
+name: Meeting import
+
+# Haalt om de vijftien minuten nieuwe bestanden op uit akira-meetings-inbox (waar
+# Zapier ruwe Plaud-transcripten neerzet) en verplaatst ze naar company/inbox/raw/
+# in deze repo. Verwijdert het bestand daarna uit de doorgeefluik-repo.
+#
+# WAAROM TWEE REPO'S: de credential die Zapier gebruikt om in de doorgeefluik-repo te
+# schrijven heeft Contents: write nodig (nodig om een bestand weg te zetten, iets wat
+# met alleen issue-rechten niet kan). Die credential leeft daarom uitsluitend in een
+# repo die nooit iets anders bevat dan tijdelijke ruwe transcripten. Deze workflow is
+# de enige plek waar toegang tot BEIDE repo's samenkomt, en gebruikt daarvoor een
+# apart secret (MEETINGS_INBOX_TOKEN) dat uitsluitend rechten heeft op de
+# doorgeefluik-repo - nooit op akira zelf. Schrijven in akira gebeurt hier met het
+# eigen, normaal scoped workflow-token.
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: meeting-import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Haal nieuwe transcripten op
+        id: fetch
+        env:
+          # Alleen toegang tot Akira-Brain/akira-meetings-inbox. Nooit tot akira zelf.
+          GH_TOKEN: ${{ secrets.MEETINGS_INBOX_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p company/inbox/raw
+          gh api repos/Akira-Brain/akira-meetings-inbox/contents/ --jq '.[].name' \
+            > /tmp/bestanden.txt || true
+
+          gevonden=0
+          while IFS= read -r naam; do
+            [ -z "$naam" ] && continue
+            [ "$naam" = "README.md" ] && continue
+            echo "ophalen: $naam"
+            gh api "repos/Akira-Brain/akira-meetings-inbox/contents/$naam" \
+              --jq '.content' | base64 -d > "company/inbox/raw/$naam"
+            gevonden=$((gevonden + 1))
+          done < /tmp/bestanden.txt
+
+          echo "gevonden=$gevonden" >> "$GITHUB_OUTPUT"
+          echo "$gevonden nieuw(e) bestand(en) opgehaald"
+
+      - name: Commit de ruwe transcripten
+        id: commit
+        if: steps.fetch.outputs.gevonden != '0'
+        run: |
+          set -euo pipefail
+          git config user.name "akira-meeting-import"
+          git config user.email "actions@github.com"
+          git add -- company/inbox/raw
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -q -m "Importeer ${{ steps.fetch.outputs.gevonden }} vergadertranscript(en) uit akira-meetings-inbox"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Pas opruimen NADAT de push naar akira gelukt is. Zo gaat een transcript nooit
+      # verloren: mislukt de push, dan blijft het bestand in de doorgeefluik-repo staan
+      # en wordt het bij de volgende poging opnieuw geprobeerd.
+      - name: Ruim de doorgeefluik-repo op
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.MEETINGS_INBOX_TOKEN }}
+        run: |
+          set -euo pipefail
+          for naam in company/inbox/raw/*; do
+            basisnaam=$(basename "$naam")
+            [ "$basisnaam" = "README.md" ] && continue
+            sha=$(gh api "repos/Akira-Brain/akira-meetings-inbox/contents/$basisnaam" --jq '.sha' 2>/dev/null || echo "")
+            [ -z "$sha" ] && continue
+            gh api -X DELETE "repos/Akira-Brain/akira-meetings-inbox/contents/$basisnaam" \
+              -f message="Verwerkt en overgenomen naar akira" -f sha="$sha" \
+              && echo "opgeruimd: $basisnaam"
+          done
