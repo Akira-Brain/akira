@@ -166,9 +166,10 @@ jobs:
               project wel aan. Zeg in je rapport expliciet dat je een project hebt
               aangemaakt.
             - Wat je niet zeker kunt plaatsen, laat je staan als open punt.
-            - Zet `updated: 2026-08-16` bij op elke project.yaml die je wijzigt.
-            - Wijzigde je een project.yaml, werk dan company/BOARD.md bij. Wijzigde je
-              geen enkel project, laat BOARD.md dan met rust.
+            - Zet de datum van vandaag in `updated:` op elke project.yaml die je wijzigt.
+            - Raak `company/BOARD.md` NIET aan. Dat bestand wordt na jou door een script
+              gegenereerd uit de project.yaml-bestanden. Zorg dus dat de yaml klopt; het
+              board volgt vanzelf.
 
             Commit niet zelf en push niet. Laat je wijzigingen in de working tree staan.
 
@@ -264,6 +265,20 @@ jobs:
               VERDICT: NAAR QUEUE
             Daaronder in twee of drie zinnen waarom, in gewone taal, zodat iemand die
             de capture niet gelezen heeft het begrijpt.
+
+      # Het board is een gegenereerde view (beslissing D5). Een model dat er stukjes
+      # in bijwerkt laat het stil uit de pas lopen met de yaml: de eerste versie miste
+      # alle deadlines en telde captures verkeerd, waardoor de daily brief meldde dat
+      # er geen deadlines waren terwijl er een over zes dagen stond.
+      - name: Genereer BOARD.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet pyyaml
+          open_captures=$(gh issue list --repo ${{ github.repository }} \
+            --label capture --state open --json number --jq 'length')
+          python system/scripts/generate-board.py "$open_captures"
 
       - name: Commit de routering
         id: commit
