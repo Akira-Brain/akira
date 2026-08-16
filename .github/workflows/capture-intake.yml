@@ -33,7 +33,11 @@ jobs:
       - name: Routeer de capture
         uses: anthropics/claude-code-action@main
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Draait op het Claude-abonnement van Tore, niet op aparte API-facturatie.
+          # Token genereren met `claude setup-token` en bewaren als repo-secret.
+          # Wil je liever losse API-facturatie, vervang deze regel dan door:
+          #   anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: |
             Je routeert een binnengekomen capture in de Akira-repo.
 

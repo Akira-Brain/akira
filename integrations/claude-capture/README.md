@@ -39,8 +39,20 @@ iets te starten. Je praat, en het staat erin.
 Blijft er iets onduidelijk, dan blijft het issue open staan met een comment die zegt wat
 er niet geplaatst kon worden. Dat komt terug in de weekly review.
 
-**Eenmalige voorwaarde:** de repo heeft een secret `ANTHROPIC_API_KEY` nodig
-(Settings -> Secrets and variables -> Actions). Zonder die sleutel draait de workflow niet.
+**Eenmalige voorwaarde:** de workflow draait op GitHub's servers, waar niemand ingelogd
+is, en heeft dus een eigen credential nodig. Dat kan gewoon op het bestaande
+Claude-abonnement:
+
+```bash
+claude setup-token
+```
+
+Bewaar de uitvoer als repo-secret `CLAUDE_CODE_OAUTH_TOKEN`
+(Settings -> Secrets and variables -> Actions -> New repository secret).
+
+Geen aparte API-facturatie nodig. Wie liever losse facturatie heeft die niet meetelt met
+het persoonlijke abonnement, kan in plaats daarvan een `ANTHROPIC_API_KEY` gebruiken; de
+regel om te wisselen staat in de workflow.
 
 ## Twee connectors, elk apart afgeschermd
 
