@@ -65,7 +65,7 @@ stukken. Zie `canon-queue.md`.
 | Meting | Aantal |
 |---|---|
 | Projecten met verouderde status (>14 dagen) | **9 van 9** |
-| Ongerouteerde captures | 0 |
+| Ongerouteerde captures | 1 |
 | Openstaande canon-queue-items | 4 |
 
 De `updated`-datums staan op 2 en 16 juli omdat dat de vergaderdatums zijn. **Op
