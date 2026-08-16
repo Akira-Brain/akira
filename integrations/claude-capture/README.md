@@ -1,8 +1,12 @@
-# Capture-pad via Claude (variant A2)
+# Capture-pad via Claude (variant A2) - NIET IN GEBRUIK
 
-Versie 0.3 - 2026-08-16.
+Versie 0.4 - 2026-08-16.
 
-## LET OP: claude.ai-connectors werken hier niet
+**Deze route wordt niet gebruikt.** Iedereen, ook Tore, gebruikt de Custom GPT uit
+`../chatgpt-capture/`. Dit document blijft staan zodat niemand hetzelfde opnieuw
+uitzoekt: hieronder staat waarom het niet werkte en wat het alternatief zou zijn.
+
+## Waarom claude.ai-connectors hier niet werken
 
 Getest op 2026-08-16: beide connectors falen bij het verbinden met de melding
 *"Automatic client registration isn't supported. Edit the connector and add an OAuth
@@ -12,21 +16,15 @@ Oorzaak: GitHub's gehoste MCP-server ondersteunt geen dynamic client registratio
 de connector-interface van claude.ai kent alleen OAuth (met optioneel een eigen client
 ID en secret). Er is daar geen veld voor een gewone Authorization-header.
 
-Gevolg per persoon:
-
-| Wie | Werkt dit? | Wat wel |
-|---|---|---|
-| Farah, op claude.ai of de app | **Nee** | de Custom GPT in `../chatgpt-capture/` |
-| Tore, in Claude Code | **Ja** | header-authenticatie, zie hieronder |
-
 Wie het toch via claude.ai wil laten werken, moet een eigen GitHub OAuth App
 registreren en de client ID in de connector zetten. Daarvoor is de callback-URL van
 Claude nodig, en die staat niet in de publieke documentatie. Niet uitgezocht, want de
-GPT-route werkt vandaag al.
+GPT-route werkt en is voor iedereen hetzelfde.
 
-## Wat wel werkt: Claude Code met een PAT
+## Het alternatief dat wel zou werken: Claude Code met een PAT
 
-GitHub's MCP-server accepteert een fine-grained token als header. In Claude Code:
+Niet in gebruik, maar hier vastgelegd voor het geval er ooit iemand bijkomt die liever
+in Claude Code werkt. GitHub's MCP-server accepteert een fine-grained token als header:
 
 ```bash
 claude mcp add --transport http akira-captures \

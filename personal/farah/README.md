@@ -10,8 +10,8 @@ aanlevert.
 
 | Pad | Hoe | Status |
 |---|---|---|
-| A1 (GEKOZEN) | Custom GPT met Action schrijft captures weg als GitHub Issue met label `capture`. Token heeft alleen Issues-rechten, geen bestandsrechten. Farah heeft geen GitHub-account nodig. | opzetklaar, zie `integrations/chatgpt-capture/` |
-| A2 (afgevallen voor Farah) | claude.ai-connectors falen op OAuth: GitHub's MCP-server kent geen automatische client-registratie. Werkt wel in Claude Code met een header, dus bruikbaar voor Tore. | zie `integrations/claude-capture/` |
+| A1 (GEKOZEN, voor iedereen) | Custom GPT met Action schrijft captures weg als GitHub Issue met label `capture`. Token heeft alleen Issues-rechten, geen bestandsrechten. Niemand heeft een GitHub-account nodig. | opzetklaar, zie `integrations/chatgpt-capture/` |
+| A2 (afgevallen) | claude.ai-connectors falen op OAuth: GitHub's MCP-server kent geen automatische client-registratie. | zie `integrations/claude-capture/` |
 | B (terugval) | De capture-GPT mailt het blok naar een vast adres; een verwerkingsronde in Claude leest de mailbox en routeert. | achter de hand |
 | C (werkt vandaag) | Farah deelt het blok met Tore; Tore's Claude routeert het in seconden. | beschikbaar |
 
@@ -22,10 +22,13 @@ issues wel. De issue-route geeft dus een echte, afgedwongen grens in plaats van 
 afspraak in een prompt. De inbox-map blijft bestaan voor captures die via Tore of via
 pad B binnenkomen.
 
-Voor Farah is A1 de route, omdat A2 op claude.ai niet verbindt (zie
-`integrations/claude-capture/README.md`). A1 heeft bovendien een voordeel dat we eerst
-als nadeel lazen: Tore maakt het token aan, waardoor Farah GitHub nooit hoeft aan te
-raken en er dus ook geen account voor haar nodig is.
+A1 is de route voor het hele team, Tore inbegrepen. A2 verbindt niet op claude.ai (zie
+`integrations/claude-capture/README.md`), en A1 heeft bovendien een voordeel dat we
+eerst als nadeel lazen: Tore maakt één token aan en deelt één GPT, waardoor niemand
+anders GitHub hoeft aan te raken of een account nodig heeft.
+
+Daarmee is deze tenant-placeholder eigenlijk al achterhaald: er is geen aparte
+"Farah-laag" meer, alleen een gedeelde ingang die voor iedereen hetzelfde werkt.
 
 ## Wat al vaststaat, ongeacht het pad
 
