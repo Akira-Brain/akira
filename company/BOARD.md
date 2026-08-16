@@ -68,11 +68,10 @@ stukken. Zie `canon-queue.md`.
 | Ongerouteerde captures | 0 |
 | Openstaande canon-queue-items | 4 |
 
-**Alle projecten staan op rood qua actualiteit, en dat is verwacht:** dit board is
-opgebouwd uit twee vergaderingen van 2 en 16 juli, terwijl het vandaag 16 augustus is. Er
-is dus vier tot zes weken werkelijkheid die het systeem nog niet gezien heeft. Statussen,
-eigenaars en deadlines zijn wat ze op de vergaderdatum waren.
+De `updated`-datums staan op 2 en 16 juli omdat dat de vergaderdatums zijn. **Op
+2026-08-16 is deze stand door Tore aanvaard als werkbare basislijn**, zonder
+project-per-project doorloop. De teller telt dus geen verwaarlozing maar de leeftijd van
+de bron.
 
-De eerste zinvolle volgende stap is geen nieuw project maar een korte doorloop van deze
-negen: klopt de status nog, wie is nu aan zet, en wat is er intussen gebeurd of
-weggevallen.
+Vanaf de eerstvolgende sessie die een project aanraakt, geldt de gewone regel weer: wie
+iets wijzigt, zet `updated` bij.
