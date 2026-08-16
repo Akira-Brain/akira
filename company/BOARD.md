@@ -83,8 +83,8 @@ Laatst gegenereerd: 2026-08-16
 |---|---|
 | Actieve projecten | 16 |
 | Projecten met verouderde status (>14 dagen) | 13 |
-| Ongerouteerde captures | 3 |
-| Openstaande canon-voorstellen | 6 |
+| Ongerouteerde captures | 4 |
+| Openstaande canon-voorstellen | 7 |
 
 Lopen deze getallen structureel op, dan is dat het signaal om te versimpelen,
 niet om uit te breiden.
