@@ -4,8 +4,10 @@ Versie 0.1 - 2026-08-14. Dit is pad A uit het ontwerp, in de vorm die vandaag we
 
 ## Wat dit is
 
-**Terugvalpad.** Het gekozen pad is `../claude-capture/`; deze variant blijft staan voor
-wie geen GitHub-account wil of kan hebben.
+**Dit is het gekozen pad voor Farah.** De claude.ai-connectorroute in
+`../claude-capture/` bleek op 2026-08-16 te falen: GitHub's MCP-server ondersteunt geen
+automatische client-registratie en claude.ai biedt geen veld voor een gewone
+Authorization-header. Deze route gebruikt een bearer-token en heeft dat probleem niet.
 
 Farah praat met een Custom GPT in ChatGPT. Die GPT schrijft elke capture weg als
 GitHub Issue in `akira`, met het label `capture`. Daarna neemt de workflow

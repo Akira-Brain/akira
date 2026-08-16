@@ -1,7 +1,45 @@
-# Capture-pad via Claude (variant A2) - GEKOZEN PAD
+# Capture-pad via Claude (variant A2)
 
-Versie 0.2 - 2026-08-16. Dit is het gekozen capture-pad voor Akira.
-De Custom GPT in `../chatgpt-capture/` blijft bestaan als terugval.
+Versie 0.3 - 2026-08-16.
+
+## LET OP: claude.ai-connectors werken hier niet
+
+Getest op 2026-08-16: beide connectors falen bij het verbinden met de melding
+*"Automatic client registration isn't supported. Edit the connector and add an OAuth
+Client ID."*
+
+Oorzaak: GitHub's gehoste MCP-server ondersteunt geen dynamic client registration, en
+de connector-interface van claude.ai kent alleen OAuth (met optioneel een eigen client
+ID en secret). Er is daar geen veld voor een gewone Authorization-header.
+
+Gevolg per persoon:
+
+| Wie | Werkt dit? | Wat wel |
+|---|---|---|
+| Farah, op claude.ai of de app | **Nee** | de Custom GPT in `../chatgpt-capture/` |
+| Tore, in Claude Code | **Ja** | header-authenticatie, zie hieronder |
+
+Wie het toch via claude.ai wil laten werken, moet een eigen GitHub OAuth App
+registreren en de client ID in de connector zetten. Daarvoor is de callback-URL van
+Claude nodig, en die staat niet in de publieke documentatie. Niet uitgezocht, want de
+GPT-route werkt vandaag al.
+
+## Wat wel werkt: Claude Code met een PAT
+
+GitHub's MCP-server accepteert een fine-grained token als header. In Claude Code:
+
+```bash
+claude mcp add --transport http akira-captures \
+  https://api.githubcopilot.com/mcp/x/issues \
+  --header "Authorization: Bearer JOUW_GITHUB_PAT"
+```
+
+Token aanmaken zoals beschreven in `../chatgpt-capture/README.md` stap 2: alleen
+Issues read and write, geen Contents write. Voor de leeskant kan hetzelfde met
+`.../mcp/x/repos/readonly` en Contents read-only.
+
+Dit is de snelste manier voor Tore om het capture-pad zelf te gebruiken. Voor Farah
+blijft de Custom GPT de route.
 
 ## Rollen: wie krijgt wat
 

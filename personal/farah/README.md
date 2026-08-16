@@ -10,8 +10,8 @@ aanlevert.
 
 | Pad | Hoe | Status |
 |---|---|---|
-| A1 (gebouwd) | Custom GPT met Action schrijft captures weg als GitHub Issue met label `capture`. Token heeft alleen Issues-rechten, geen bestandsrechten. Farah heeft geen GitHub-account nodig. | opzetklaar, zie `integrations/chatgpt-capture/` |
-| A2 (gebouwd) | Claude met twee afgeschermde GitHub-connectors doet hetzelfde in vijf minuten opzet, zonder token en zonder vervaldatum. Vereist wel een GitHub-account met toegang tot de repo. | opzetklaar, zie `integrations/claude-capture/` |
+| A1 (GEKOZEN) | Custom GPT met Action schrijft captures weg als GitHub Issue met label `capture`. Token heeft alleen Issues-rechten, geen bestandsrechten. Farah heeft geen GitHub-account nodig. | opzetklaar, zie `integrations/chatgpt-capture/` |
+| A2 (afgevallen voor Farah) | claude.ai-connectors falen op OAuth: GitHub's MCP-server kent geen automatische client-registratie. Werkt wel in Claude Code met een header, dus bruikbaar voor Tore. | zie `integrations/claude-capture/` |
 | B (terugval) | De capture-GPT mailt het blok naar een vast adres; een verwerkingsronde in Claude leest de mailbox en routeert. | achter de hand |
 | C (werkt vandaag) | Farah deelt het blok met Tore; Tore's Claude routeert het in seconden. | beschikbaar |
 
@@ -22,7 +22,7 @@ issues wel. De issue-route geeft dus een echte, afgedwongen grens in plaats van 
 afspraak in een prompt. De inbox-map blijft bestaan voor captures die via Tore of via
 pad B binnenkomen.
 
-De keuze tussen A1 en A2 hangt aan een vraag: wil Farah een GitHub-account? Zo ja, dan
+Voor Farah is A1 de route, omdat A2 op claude.ai niet verbindt. A1 heeft als bijkomend
 is A2 korter en is er niets te onderhouden. Zo nee, dan is A1 de route, want daar maakt
 Tore het token aan en raakt Farah GitHub nooit aan.
 
