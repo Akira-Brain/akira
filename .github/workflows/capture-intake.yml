@@ -39,11 +39,12 @@ jobs:
       - name: Routeer de capture
         uses: anthropics/claude-code-action@main
         with:
-          # Draait op het Claude-abonnement van Tore, niet op aparte API-facturatie.
-          # Token genereren met `claude setup-token` en bewaren als repo-secret.
-          # Wil je liever losse API-facturatie, vervang deze regel dan door:
-          #   anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # API-key, niet het abonnementstoken. Getest op 2026-08-16: een token uit
+          # `claude setup-token` werd hier geweigerd (init, daarna direct is_error met
+          # nul turns en nul kosten), ook na opnieuw plakken. Een API-key is bedoeld
+          # voor onbewaakte CI: verloopt niet en concurreert niet met persoonlijk
+          # gebruik van hetzelfde abonnement.
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           # Zonder expliciete github_token probeert de action een OIDC-token in te
           # wisselen bij de Claude GitHub App, en faalt hij als die app niet op de
           # repo geinstalleerd is. Het ingebouwde workflow-token volstaat hier.
