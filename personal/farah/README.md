@@ -10,16 +10,21 @@ aanlevert.
 
 | Pad | Hoe | Status |
 |---|---|---|
-| A (gebouwd) | Custom GPT met Action schrijft captures weg als GitHub Issue met label `capture`; Tore routeert via skill `capture-intake`. Token heeft alleen Issues-rechten, geen bestandsrechten. | opzetklaar, zie `integrations/chatgpt-capture/` |
+| A1 (gebouwd) | Custom GPT met Action schrijft captures weg als GitHub Issue met label `capture`. Token heeft alleen Issues-rechten, geen bestandsrechten. Farah heeft geen GitHub-account nodig. | opzetklaar, zie `integrations/chatgpt-capture/` |
+| A2 (gebouwd) | Claude met twee afgeschermde GitHub-connectors doet hetzelfde in vijf minuten opzet, zonder token en zonder vervaldatum. Vereist wel een GitHub-account met toegang tot de repo. | opzetklaar, zie `integrations/claude-capture/` |
 | B (terugval) | De capture-GPT mailt het blok naar een vast adres; een verwerkingsronde in Claude leest de mailbox en routeert. | achter de hand |
 | C (werkt vandaag) | Farah deelt het blok met Tore; Tore's Claude routeert het in seconden. | beschikbaar |
 
-Pad A wijkt op een punt af van het oorspronkelijke ontwerp: captures landen als GitHub
-Issue in plaats van als bestand in `company/inbox/`. Reden: een token kan wel
-Issues-rechten krijgen zonder bestandsrechten, maar niet schrijfrechten op alleen de
-map `inbox/`. De issue-route geeft dus een echte, door GitHub afgedwongen grens in
-plaats van een afspraak in een prompt. De inbox-map blijft bestaan voor captures die
-via Tore of via pad B binnenkomen.
+Beide varianten van pad A wijken op een punt af van het oorspronkelijke ontwerp:
+captures landen als GitHub Issue in plaats van als bestand in `company/inbox/`. Reden:
+schrijfrechten op alleen de map `inbox/` bestaan niet in GitHub, maar rechten op alleen
+issues wel. De issue-route geeft dus een echte, afgedwongen grens in plaats van een
+afspraak in een prompt. De inbox-map blijft bestaan voor captures die via Tore of via
+pad B binnenkomen.
+
+De keuze tussen A1 en A2 hangt aan een vraag: wil Farah een GitHub-account? Zo ja, dan
+is A2 korter en is er niets te onderhouden. Zo nee, dan is A1 de route, want daar maakt
+Tore het token aan en raakt Farah GitHub nooit aan.
 
 ## Wat al vaststaat, ongeacht het pad
 
