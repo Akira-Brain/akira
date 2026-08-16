@@ -30,7 +30,6 @@ Laatst gegenereerd: 2026-08-16
 | **Groen - aanvraag stijladvies/beeldcreatie (Ayman en Lien)** | Bevestigen of de conceptmail al verstuurd is en wat de reactie van Groen was | tore |
 | **Locomotieven - prospectie bij agencies en bureaus** | Bestaande lijst prioriteren en de eerste pitchgesprekken vastleggen | tore |
 | **Merkenpitch Focus Advertising** | Eerste versie pitch voorbereiden | farah |
-| **Prospect: Nora De Backer (modewinkel) - interesse in samenwerking** | Contact opnemen met Nora De Backer over de mogelijke samenwerking | farah |
 | **Stock sale 2026 - privé (juni) en breed publiek (najaar)** | De privé-verkoop (gepland juni 2026) ligt al voor de systeemdatum (2026-08-16) - navragen of die heeft plaatsgevonden; de najaarsverkoop (sept/okt) ligt nog vooruit en blijft relevant | tore |
 
 ## Later
@@ -73,7 +72,7 @@ Laatst gegenereerd: 2026-08-16
 
 - niemand toegewezen: 32
 - tore: 12
-- farah: 6
+- farah: 5
 - luna: 1
 
 ---
@@ -82,10 +81,10 @@ Laatst gegenereerd: 2026-08-16
 
 | Meting | Aantal |
 |---|---|
-| Actieve projecten | 17 |
+| Actieve projecten | 16 |
 | Projecten met verouderde status (>14 dagen) | 13 |
 | Ongerouteerde captures | 0 |
-| Openstaande canon-voorstellen | 7 |
+| Openstaande canon-voorstellen | 6 |
 
 Lopen deze getallen structureel op, dan is dat het signaal om te versimpelen,
 niet om uit te breiden.
