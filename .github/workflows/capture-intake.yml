@@ -45,14 +45,18 @@ jobs:
           # voor onbewaakte CI: verloopt niet en concurreert niet met persoonlijk
           # gebruik van hetzelfde abonnement.
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # Zonder deze lijst weigert de action elke schrijfactie: de eerste
-          # geslaagde run deed 17 turns en kreeg 9 permission denials, waardoor er
-          # niets gerouteerd werd. De echte grens ligt niet hier maar in de
-          # commit-stap, die alleen een vaste lijst paden staged.
-          allowed_tools: "Read,Write,Edit,Glob,Grep,Bash"
-          # Routeren is classificatiewerk, geen zwaar redeneerwerk. Opus deed het
-          # voor 0,57 dollar per capture; Sonnet volstaat ruimschoots.
-          claude_args: "--model claude-sonnet-5"
+          # allowed_tools bestaat NIET als input van deze action; dat werd genegeerd
+          # met een warning. Tools gaan via claude_args --allowedTools.
+          #
+          # Zonder die lijst weigert de action elke schrijfactie: eerdere runs deden
+          # 17 turns met 9 denials en routeerden niets. De echte grens ligt niet
+          # hier maar in de commit-stap, die alleen een vaste lijst paden staged.
+          #
+          # Model: routeren is classificatiewerk. Opus deed het voor 0,57 dollar per
+          # capture, Sonnet voor een fractie daarvan.
+          claude_args: |
+            --model claude-sonnet-5
+            --allowedTools "Read,Write,Edit,Glob,Grep,Bash(gh issue view:*),Bash(ls:*),Bash(cat:*)"
           # Zonder expliciete github_token probeert de action een OIDC-token in te
           # wisselen bij de Claude GitHub App, en faalt hij als die app niet op de
           # repo geinstalleerd is. Het ingebouwde workflow-token volstaat hier.
