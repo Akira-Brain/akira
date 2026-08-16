@@ -152,22 +152,6 @@ afgesloten. Er is dus nog geen praktijktoets van deze prijs.
 
 ---
 
-### V-2026-007 - Waarborg private styling verhuur
-
-Bestand: `knowledge/pricing/private-styling-verhuur.md`
-Voorstel:
-  - waarborg: 200 euro bij elke verhuur, ongeacht het stuk
-Rationale: vastgesteld op 2026-08-16 als vaste regel in het private styling-tarief.
-Evidence:
-  - `inbox/2026-08-16-5-tore-waarborg-verhuur.md`
-Ingediend: 2026-08-16 door capture-intake
-Nodig: akkoord van Tore en Farah
-
-**Conflict met V-2026-002:** V-2026-002 stelt waarborg op 150 euro, dit voorstel op 200 euro.
-Dit voorstel vervangt en overschrijft het waarborg-deel uit V-2026-002 als het wordt goedgekeurd.
-
----
-
 ## Afgehandeld
 
 *Nog niets.*
