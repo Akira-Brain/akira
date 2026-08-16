@@ -1,0 +1,29 @@
+project: merkenpitch-focus
+title: "Merkenpitch Focus Advertising"
+tenant: company
+status: active
+priority: next
+next_step: "Eerste versie pitch voorbereiden"
+next_step_owner: farah
+updated: 2026-08-16
+
+people: [farah]
+waiting_for: null
+deadline: 2026-08-22
+tags: [commercieel, merken, pitch]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: scoping
+
+tasks:
+  - task: "Eerste versie pitch voorbereiden"
+    owner: farah
+    due: 2026-08-22
+    status: open
+    needs_decision: false
+
+files: {}
+
+# Apart traject los van het consultancy-aanbod. Bron: Tore, 2026-08-16.

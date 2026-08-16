@@ -20,6 +20,7 @@ Laatst gegenereerd: 2026-08-16
 
 | Project | Volgende stap | Bij wie |
 |---|---|---|
+| **Merkenpitch - Focus Advertising** | Eerste versie pitch voorbereiden | Farah |
 | **Consultancy-aanbod** | Trapsgewijs aanbod uitwerken (light / medium / intensief) | Tore |
 | **Ecosysteem** | Scope afbakenen, dan longlist partners | Tore |
 | **Locomotieven-prospectie** | Lijst prioriteren, eerste pitchgesprekken vastleggen | Tore |
