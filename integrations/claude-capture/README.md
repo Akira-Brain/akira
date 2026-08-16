@@ -50,6 +50,31 @@ Geen aparte API-facturatie nodig. Wie liever losse facturatie heeft die niet mee
 het persoonlijke abonnement, kan in plaats daarvan een `ANTHROPIC_API_KEY` gebruiken; de
 regel om te wisselen staat in de workflow.
 
+## Wat er NIET in Akira belandt
+
+Connectors staan in Claude **per gesprek** aan of uit, niet permanent voor je hele
+account. Standaard staan ze uit. Je zet ze aan met de `+`-knop linksonder in een chat,
+onder "Connectors".
+
+Er komt dus alleen iets in Akira als twee dingen tegelijk waar zijn:
+
+1. de connectors staan aan in dat specifieke gesprek, en
+2. Claude besluit een capture aan te maken
+
+Dat tweede gebeurt uit zichzelf alleen in het project `Chatty`, omdat de instructies daar
+zeggen dat er proactief vastgelegd moet worden. In je andere Claude-gesprekken bestaat die
+instructie niet en is de tool niet eens beschikbaar.
+
+**De praktische regel: het project Chatty is de grens.** Gebruik dat voor alles wat
+vastgelegd mag worden, en laat de connectors elders gewoon uit staan. Zet je ze toch aan
+in een ander gesprek, houd er dan rekening mee dat Chatty's instructie "bij twijfel
+wegschrijven" luidt.
+
+Niets gebeurt stiekem: elke capture is een zichtbaar issue en elke routering is een commit
+met een boodschap. Landt er iets dat er niet hoort, dan sluit je het issue en draai je de
+commit terug. Meer schade dan dat kan een capture niet aanrichten, want de connectors geven
+alleen rechten op issues en op lezen.
+
 ## Twee connectors, elk apart afgeschermd
 
 Dit is de kern van de opzet. GitHub's MCP-server laat je per URL bepalen welke tools
