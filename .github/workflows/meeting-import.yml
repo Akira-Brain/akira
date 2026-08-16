@@ -68,10 +68,34 @@ jobs:
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
+            git diff --cached --name-only --diff-filter=A > /tmp/geimporteerd.txt
             git commit -q -m "Importeer ${{ steps.fetch.outputs.gevonden }} vergadertranscript(en) uit akira-meetings-inbox"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # De claude-code-action ondersteunt geen push-events als trigger ("Unsupported
+      # event type: push"). In plaats daarvan maakt deze stap een issue aan dat alleen
+      # naar de geimporteerde bestandspaden verwijst - klein, geen tekenlimiet-risico,
+      # want de inhoud zelf staat al als bestand in de repo. meeting-process.yml
+      # triggert op dat issue, precies zoals capture-intake.yml al op capture-issues doet.
+      - name: Maak het verwerkingsissue aan
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          {
+            echo "Nieuwe ruwe vergadertranscripten, klaar voor verwerking:"
+            echo
+            while IFS= read -r pad; do
+              [ -z "$pad" ] && continue
+              echo "- \`$pad\`"
+            done < /tmp/geimporteerd.txt
+          } > /tmp/issue-body.md
+          gh issue create --repo ${{ github.repository }} \
+            --title "Vergadering geimporteerd - $(date -u +%Y-%m-%d\ %H:%M)" \
+            --label meeting --body-file /tmp/issue-body.md
 
       # Pas opruimen NADAT de push naar akira gelukt is. Zo gaat een transcript nooit
       # verloren: mislukt de push, dan blijft het bestand in de doorgeefluik-repo staan

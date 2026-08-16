@@ -1,9 +1,10 @@
 name: Meeting process
 
 # Verwerkt nieuwe ruwe vergadertranscripten in company/inbox/raw/ volledig automatisch.
-# Triggert op elke push die dat pad raakt - in de praktijk vrijwel altijd een commit
-# van de meeting-import workflow, maar werkt evengoed als er ooit handmatig een
-# transcript wordt toegevoegd.
+# Triggert op het issue dat meeting-import.yml aanmaakt (label "meeting"), niet op de
+# onderliggende push zelf: de claude-code-action ondersteunt geen push-events als
+# trigger. Het issue bevat alleen bestandspaden, nooit transcriptinhoud, dus er is geen
+# tekenlimiet-risico ongeacht hoe lang het onderliggende transcript is.
 #
 # Dit is bewust een APARTE workflow van capture-intake.yml. Een vol vergadertranscript
 # vraagt meer redeneervermogen en een ruimere turnlimiet dan een korte capture, en de
@@ -16,19 +17,16 @@ name: Meeting process
 # voor de volledige, geteste regels waarop dit stap voor stap gebaseerd is.
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "company/inbox/raw/**"
+  issues:
+    types: [opened, labeled]
 
 concurrency:
-  group: meeting-process
-  cancel-in-progress: false
+  group: meeting-process-${{ github.event.issue.number }}
+  cancel-in-progress: true
 
 jobs:
   process:
-    # Niet draaien op de opruim-commit van deze workflow zelf, mocht die er ooit komen.
-    if: github.actor != 'akira-meeting-processor'
+    if: contains(github.event.issue.labels.*.name, 'meeting')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -47,32 +45,13 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Welke ruwe transcripten zijn nieuw in deze push.
-          before="${{ github.event.before }}"
-          after="${{ github.event.after }}"
-          if [ -z "$before" ] || [ "$before" = "0000000000000000000000000000000000000000" ]; then
-            nieuw=$(git ls-files company/inbox/raw/)
-          else
-            nieuw=$(git diff --name-only --diff-filter=A "$before" "$after" -- company/inbox/raw/ || true)
-            if [ -z "$nieuw" ]; then
-              nieuw=$(git ls-files company/inbox/raw/)
-            fi
-          fi
-          echo "nieuwe transcripten:"
-          echo "$nieuw"
-          echo "$nieuw" > /tmp/nieuwe-transcripten.txt
-
+          # De issue-body van meeting-import.yml bevat alleen bestandspaden, geen
+          # transcriptinhoud - dus geen tekenlimiet-risico, ongeacht hoe lang het
+          # onderliggende transcript is.
           {
             echo "## Nieuwe ruwe vergadertranscripten in deze run"
             echo
-            if [ -s /tmp/nieuwe-transcripten.txt ]; then
-              while IFS= read -r pad; do
-                [ -z "$pad" ] && continue
-                echo "- $pad"
-              done < /tmp/nieuwe-transcripten.txt
-            else
-              echo "- (geen gevonden - controleer git-geschiedenis)"
-            fi
+            gh issue view ${{ github.event.issue.number }} --json body --jq '.body'
             echo
             echo "## Bestaande actieve projecten"
             echo
@@ -246,20 +225,23 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      # Er is geen issue om op terug te melden zoals bij een capture, dus deze workflow
-      # maakt er zelf een aan als receipt - zichtbaar bewijs dat het gebeurd is, zonder
-      # dat iemand daar iets voor hoeft te doen.
-      - name: Maak een receipt-issue aan
+      - name: Meld terug op het issue
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          titel="Vergadering verwerkt - $(date -u +%Y-%m-%d\ %H:%M)"
-          if [ -f .capture-report.md ]; then
-            gh issue create --repo ${{ github.repository }} \
-              --title "$titel" --label meeting-verwerkt --body-file .capture-report.md
+          if [ ! -f .capture-report.md ]; then
+            gh issue comment ${{ github.event.issue.number }} \
+              --body "De verwerking liep vast: er is geen rapport gegenereerd. Dit issue blijft open."
+            exit 0
+          fi
+
+          gh issue comment ${{ github.event.issue.number }} --body-file .capture-report.md
+
+          if [ "$(head -n 1 .capture-report.md)" = "STATUS: VOLLEDIG" ] \
+             && [ "${{ steps.commit.outputs.changed }}" = "true" ]; then
+            gh issue close ${{ github.event.issue.number }} \
+              --comment "Volledig verwerkt. Gesloten door meeting-process."
           else
-            gh issue create --repo ${{ github.repository }} \
-              --title "$titel (geen rapport)" --label meeting-verwerkt \
-              --body "De verwerking liep vast: er is geen rapport gegenereerd. Controleer de Actions-log."
+            echo "issue blijft open: onopgeloste punten, of niets gewijzigd"
           fi
