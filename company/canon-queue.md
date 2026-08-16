@@ -152,6 +152,28 @@ afgesloten. Er is dus nog geen praktijktoets van deze prijs.
 
 ---
 
+### V-2026-007 - Werkwijze: intakeformulier verplicht voor nieuwe merkklanten
+
+Bestand: `knowledge/operations/intake-merkklanten-verplicht.md` (bestaat nog niet)
+Voorstel: vastleggen als vaste procedure dat voor elke nieuwe merkklant wordt aangenomen,
+eerst een intakeformulier wordt laten invullen. Geen uitzonderingen genoemd.
+Rationale: aangekondigd door Tore als reeds genomen beslissing tijdens een kort overleg
+met Farah.
+Evidence:
+  - `inbox/2026-08-16-intakeformulier-en-prospect-nora-de-backer.md`
+Ingediend: 2026-08-16 door capture-intake
+Nodig: akkoord van Tore en Farah
+
+**Hoe zwaar dit weegt:** dit voegt een verplichte stap toe vooraan de sales-funnel voor
+merkklanten (naast de al bestaande beeld-audit-stap, zie
+`knowledge/operations/beeld-audit-standaard.md`). Het is geen herpositionering en raakt
+prijs noch dienstmodel, maar het is wel structureel: het verandert hoe elke nieuwe
+merkklant vanaf nu wordt aangenomen, zonder genoemde uitzondering. Er is in het transcript
+geen inhoud van het formulier zelf besproken (welke vragen, wie het opstelt) - dat is een
+open punt bovenop de canon-vraag.
+
+---
+
 ## Afgehandeld
 
 *Nog niets.*

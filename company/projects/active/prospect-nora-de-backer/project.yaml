@@ -1,0 +1,33 @@
+project: prospect-nora-de-backer
+title: "Prospect: Nora De Backer (modewinkel) - interesse in samenwerking"
+tenant: company
+status: active
+priority: next
+next_step: "Contact opnemen met Nora De Backer over de mogelijke samenwerking"
+next_step_owner: farah
+updated: 2026-08-16
+
+people: [nora-de-backer]
+waiting_for: null
+deadline: null
+tags: [prospectie, mode, sales]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: n.v.t.
+
+tasks:
+  - task: "Contact opnemen met Nora De Backer (modewinkel) over interesse in samenwerking"
+    owner: farah
+    due: null
+    status: open
+    needs_decision: false
+
+files: {}
+
+# Nora De Backer is een nieuwe contactpersoon, verbonden aan een modewinkel die interesse
+# toonde in een samenwerking met het atelier. Naam van de winkel, aard van de gewenste
+# samenwerking en een exacte datum zijn niet genoemd in het brongesprek - enkel dat Farah
+# dit "deze maand" (augustus 2026) nog zou oppakken. Open punten: welke modewinkel, wat
+# voor samenwerking wordt gezocht, en de exacte deadline binnen de maand.
