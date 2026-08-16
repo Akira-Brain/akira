@@ -1,0 +1,46 @@
+project: stock-sale-2026
+title: "Stock sale 2026 - privé (juni) en breed publiek (najaar)"
+tenant: company
+status: active
+priority: next
+next_step: "De privé-verkoop (gepland juni 2026) ligt al voor de systeemdatum (2026-08-16) - navragen of die heeft plaatsgevonden; de najaarsverkoop (sept/okt) ligt nog vooruit en blijft relevant"
+next_step_owner: tore
+updated: 2026-04-30
+
+people: []
+waiting_for: null
+deadline: 2026-10-31
+tags: [stock, sales, event]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: n.v.t.
+
+tasks:
+  - task: "E-maillijst opstellen voor privé stock sale (eerdere bezoekers)"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Voorraad aanvullen met Vinted-stukken voor volume"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Najaarsverkoop (sept/okt) plannen: breder publiek, TikTok-communicatie, soldes-insteek"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+
+files: {}
+
+# Twee bewust gescheiden events, verschillende doelgroep en insteek:
+# - juni 2026: prive/invite-only, zomer/festivaloutfits, kwaliteit boven volume, geen
+#   brede promotie. Deze datum ligt al in het verleden t.o.v. vandaag - statuscheck nodig.
+# - sept/okt 2026: breed publiek, TikTok, volume/opruiming ("soldes"). Nog upcoming.
+#
+# Relatie tot stock-digitalisering: een gedigitaliseerde stock (Checkroom) maakt beide
+# events makkelijker te organiseren, maar dit project gaat over de verkoopevents zelf,
+# niet over de infrastructuur.

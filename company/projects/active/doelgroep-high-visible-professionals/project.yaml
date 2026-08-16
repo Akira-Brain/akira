@@ -1,0 +1,50 @@
+project: doelgroep-high-visible-professionals
+title: "Doelgroep en sales discovery - high visible professionals"
+tenant: company
+status: active
+priority: next
+next_step: "Koffiegesprekken plannen met Mathieu's management, Sarah Putemans en Julie Vermeijeren"
+next_step_owner: farah
+updated: 2026-04-22
+
+people: [mathieu, sarah-putemans, julie-vermeijeren]
+waiting_for: null
+deadline: null
+tags: [strategie, doelgroep, sales, hvp]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: n.v.t.
+
+tasks:
+  - task: "Discovery-gesprek met Mathieu's management over budgettering en attitude tegenover styling"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Koffiegesprek plannen met Sarah Putemans"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Koffiegesprek plannen met Julie Vermeijeren"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Aanbodmodel bepalen (monthly retainer vs. curated capsule vs. combinatie) op basis van discovery-gesprekken"
+    owner: null
+    due: null
+    status: open
+    needs_decision: true
+
+files: {}
+
+# Doel: het HVP-segment (structurele zichtbaarheid als businessmodel, consistentie,
+# herkenbaarheid, status) valideren via discovery-gesprekken voordat er een vast aanbod
+# gebouwd wordt. Zie canon-voorstel V-2026-005 voor de doelgroepdefinitie zelf.
+#
+# Relatie tot positionering-starmaker: dit werk (april) gaat vooraf aan de
+# Starmaker-sessie met Jasmijn (juli) en voedt die waarschijnlijk, maar de twee zijn
+# nooit expliciet samengebracht. Zie de open vraag daarover in de capture van 27/4.

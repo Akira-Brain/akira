@@ -86,6 +86,72 @@ antwoord hoort in dezelfde policy te landen.
 
 ---
 
+### V-2026-005 - Positionering en dienstmodel: beeldcreatie voor stijlcreatie, "beeldstrategen"
+
+Bestand: `knowledge/positioning/beeldcreatie-stijlcreatie.md` (bestaat nog niet)
+Voorstel: vastleggen als canon dat de dienstverlening in twee opeenvolgende lagen werkt:
+  1. **Beeldcreatie** (fundament) - discovery, workshop, naverwerking tot een "image
+     brief": het gedeelde visuele kompas waarop alle latere visuele uitingen bouwen.
+  2. **Stijlcreatie** (uitvoering) - pas mogelijk nadat het beeld helder is; de laagste,
+     meest operationele vorm van visuele uiting.
+Plus: het atelier benoemt zichzelf voortaan als "beeldstrategen" / visual identity
+consultants, niet als stylisten, en focust nieuwe aanvragen op celebrities en artiesten
+in plaats van lange privé-transformatietrajecten (zie ook decision D-2026-002, die dit
+laatste punt al vastlegt als beslissing).
+Rationale: uitgekristalliseerd op 2026-04-27 naar aanleiding van een aanvraag van Groen,
+en herbevestigd op 2026-04-30 als toe te voegen laag aan de value proposition voor
+festival- en rode loper-pitches. Onderbouwd met precedent (DJ Ruby XX, Ellie Blue: een
+gedeeld art direction-document bespaarde aantoonbaar tijd bij uitvoering) en met een
+contrasterend voorbeeld (Sanne: zonder zo'n document veel trial-and-error).
+Evidence:
+  - `inbox/2026-04-27-casus-groen-beeldcreatie-stijlcreatie.md`
+  - `inbox/2026-04-30-event-styling-festivals-cannes.md`
+  - `decisions/2026/D-2026-002.md`
+Ingediend: 2026-08-16, handmatig tijdens braindump-sessie
+Nodig: akkoord van Tore en Farah
+
+**Waarom dit zwaar weegt en zorgvuldig gelezen moet worden:** dit is geen operationele
+regel maar een herpositionering van wie het atelier zelf is en welke klanten het
+aanneemt. Het raakt drie dingen tegelijk: het dienstmodel (twee lagen), de zelfbenoeming
+("beeldstrategen"), en de klantfocus (weg van privétrajecten). Elk van de drie kan
+afzonderlijk beoordeeld worden - het hoeft geen alles-of-niets-akkoord te zijn.
+
+**Relatie tot V-2026-001 (Starmaker):** dit voorstel dateert van april, de Starmaker-
+positionering (V-2026-001) van juli. Ze lijken elkaar niet tegen te spreken - Starmaker
+is een marktpositionering/scenariokeuze, dit is een methodiek voor hoe het werk zelf
+verloopt - maar ze zijn in de bronnen nooit expliciet aan elkaar gekoppeld. Dat is een
+open vraag, geen conflict; zie de capture van 27/4 voor de precieze formulering.
+
+---
+
+### V-2026-006 - Pricing: beeldcreatie-traject
+
+Bestand: `knowledge/pricing/beeldcreatie.md` (bestaat nog niet)
+Voorstel:
+  - beeldcreatie (discovery + workshop + image brief): vanaf 3500 euro per persoon
+  - stijlcreatie: apart geprijsd, vanaf ongeveer 3000 euro, afhankelijk van omvang -
+    principieel NOOIT duurder dan beeldcreatie, want dat zou de eigen positionering
+    (beeldcreatie is het fundament, het waardevolste werk) tegenspreken
+Rationale: op 2026-04-27 becijferd op basis van een gedetailleerde urenraming (~45 uur
+in totaal aan discovery, workshop en verwerking, tegen ~100 euro/uur), afgerond naar
+3500 euro per persoon met de onderbouwing dat werk voor twee personen tegelijk (zoals bij
+Groen: Ayman + Lien) deels overlapt. Ter vergelijking: de bestaande privétrajecten
+("Eline") kosten nu 4500 euro, wat het team zelf te laag vindt voor het geleverde werk -
+dat is geen onderdeel van dit voorstel, maar relevante context.
+Evidence:
+  - `inbox/2026-04-27-casus-groen-beeldcreatie-stijlcreatie.md`
+Ingediend: 2026-08-16, handmatig tijdens braindump-sessie
+Nodig: akkoord van Tore en Farah
+
+**Afhankelijkheid van V-2026-005:** deze prijs heeft alleen betekenis als het
+tweelagenmodel zelf canon wordt. Overweeg beide items samen te behandelen.
+
+**Nog niet in een echte offerte bevestigd:** dit was de eerste keer dat dit tarief werd
+uitgerekend, toegepast op een aanvraag (Groen) waarvan niet bekend is of hij is
+afgesloten. Er is dus nog geen praktijktoets van deze prijs.
+
+---
+
 ## Afgehandeld
 
 *Nog niets.*

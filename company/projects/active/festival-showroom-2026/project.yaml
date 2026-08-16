@@ -1,0 +1,49 @@
+project: festival-showroom-2026
+title: "Festival showroom - 10 A-profielen, seizoen 2026"
+tenant: company
+status: active
+priority: now
+next_step: "Status opvragen: het festivalseizoen (medio juni - begin september 2026) loopt op dit moment (systeemdatum 2026-08-16) - navragen hoever de showroom, de talent agency-lijst en de Stine-outreach staan"
+next_step_owner: tore
+updated: 2026-04-30
+
+people: []
+waiting_for: null
+deadline: 2026-09-01
+tags: [event-styling, festivals, commercieel]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: n.v.t.
+
+tasks:
+  - task: "Talent agencies en PR-bureaus contacteren, aanbod-mail schrijven"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Brand collab-lijst opbouwen (product placement/seeding-afspraken)"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Outfit sourcen en versturen als love letter naar Stine/management"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+
+files: {}
+
+# BELANGRIJK: vandaag (2026-08-16) zit het festivalseizoen (medio juni - begin
+# september) al bijna op zijn einde. Deze planning dateert van 30 april 2026 en is niet
+# bevestigd tegen de werkelijkheid. Eerste actie is dus geen nieuwe uitvoering maar een
+# statuscheck: is de showroom gebouwd, zijn er A-profielen gestyled, is er contact
+# geweest met Stine?
+#
+# Bewust NIET opgezet: een rental-service voor B-profielen. Risico/waarborglast te groot
+# buiten een gecontroleerde productieomgeving (zie learning
+# working/learnings/rental-risico-gecontroleerde-omgeving.md). Wel als optie genoteerd:
+# een pop-up styling-dienst bij een PR-bureau of merk zelf, tegen servicefee, met hún
+# voorraad - dit is bewust losgehouden van deze festival-showroom en geen prioriteit.

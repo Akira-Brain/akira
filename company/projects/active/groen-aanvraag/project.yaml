@@ -1,0 +1,45 @@
+project: groen-aanvraag
+title: "Groen - aanvraag stijladvies/beeldcreatie (Ayman en Lien)"
+tenant: company
+status: active
+priority: next
+next_step: "Bevestigen of de conceptmail al verstuurd is en wat de reactie van Groen was"
+next_step_owner: tore
+updated: 2026-04-27
+
+client: groen
+people: []
+waiting_for: "bevestiging vanuit Tore/Farah of dit traject inmiddels is opgevolgd"
+deadline: null
+tags: [inquiry, beeldcreatie, politiek]
+
+commercial:
+  quoted: 3500
+  accepted: null
+  status: quoted
+  # Beeldcreatie vanaf 3500 euro per persoon (duo: Ayman + Lien), zie canon-voorstel
+  # V-2026-006. Stijlcreatie apart, vanaf ~3000 euro, nog niet uitonderhandeld.
+
+tasks:
+  - task: "Conceptmail aan Lien afwerken en versturen"
+    owner: farah
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Materiaal/richtlijnen opvragen bij Groen's communicatieteam"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Onderzoeken of het traject via Vlaio (contact Julie) gedeeltelijk gesubsidieerd kan worden"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: false
+
+files: {}
+
+# Deze case was de directe aanleiding voor de herpositionering naar "beeldcreatie voor
+# stijlcreatie" en de zelfbenoeming als beeldstrategen (zie canon-queue V-2026-005 en
+# decision D-2026-002). Ongeacht of Groen zelf klant wordt, is dit traject strategisch
+# al waardevol geweest.

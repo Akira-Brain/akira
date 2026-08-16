@@ -1,0 +1,17 @@
+client: groen
+display_name: "Groen"
+sensitivity: normal
+type: agency
+since: 2026
+relationship_owner: farah
+projects: [groen-aanvraag]
+contacts: []
+vault: null
+
+notes:
+  - date: 2026-04-27
+    text: "Politieke partij. Aanvraag kwam van covoorzitter Lien namens nieuwe voorzitter Ayman: stijladvies en info over pakketten. Geen vast budget ('bereid om all the way te gaan')."
+  - date: 2026-04-27
+    text: "Doel volgens Lien: Ayman positioneren als authentieke politicus die dicht bij mensen staat; dat beeld moet ook aan Groen als merk plakken. Geen aparte brandmanager, wel een communicatieteam; Lien bewaakt zelf de visuele identiteit."
+  - date: 2026-04-27
+    text: "Deze aanvraag was de directe aanleiding voor de herpositionering van het atelier naar beeldcreatie-voor-stijlcreatie (zie decision D-2026-002)."

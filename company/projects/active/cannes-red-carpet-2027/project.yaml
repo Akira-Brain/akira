@@ -1,0 +1,47 @@
+project: cannes-red-carpet-2027
+title: "Cannes - rode loper-aanwezigheid 12 mei 2027"
+tenant: company
+status: active
+priority: now
+next_step: "URGENT status-check: de interne boekingsdeadline (juni 2026, ongeveer een jaar vooraf) ligt al voor de huidige systeemdatum (2026-08-16) - navragen of geboekt is, en zo niet, of het venster voor 2027 nog haalbaar is"
+next_step_owner: tore
+updated: 2026-04-30
+
+people: [dirk]
+waiting_for: "budget - boeken was voorwaardelijk aan beschikbaar geld, niet een harde toezegging"
+deadline: 2027-05-12
+tags: [rode-loper, internationaal, cannes]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: n.v.t.
+
+tasks:
+  - task: "Met Dirk praten over praktische Cannes-logistiek (locatie, discretie, ID/waarborg-vereisten)"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Met Annemie praten over on-site styling bij producties"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Locatie/showroom boeken in Cannes voor 2027"
+    owner: null
+    due: null
+    status: open
+    needs_decision: true
+  - task: "Brede, high-end designerlijst opbouwen voor outreach"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+
+files: {}
+
+# LET OP: dit is het meest tijdgevoelige item uit deze hele batch. De streefdeadline om
+# te boeken was "juni 2026" (ongeveer een jaar vooraf aan 12 mei 2027), en die maand ligt
+# nu al achter ons. Als er nog niet geboekt is, moet er meteen uitgezocht worden of het
+# venster nog haalbaar is of dat 2027 al gemist is.

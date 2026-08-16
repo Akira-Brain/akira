@@ -1,0 +1,52 @@
+project: as-adventure-second-life
+title: "AS Adventure - Second Life campagne 2026"
+tenant: company
+status: active
+priority: now
+next_step: "Bevestigen actuele status: deze planning dateert van 2026-02-13 met shoot medio maart en live-datum begin-half april 2026, wat al voor de huidige systeemdatum (2026-08-16) ligt"
+next_step_owner: tore
+updated: 2026-02-13
+
+client: as-adventure
+people: [greet, eline]
+waiting_for: null
+deadline: null
+tags: [productie, klant, campagne]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: won
+  # Scope/verantwoordelijkheid was al afgesproken tijdens de call van 13/2; geen offertecijfer
+  # in het transcript. "Won" hier betekent: opdracht bevestigd, geen prijs bekend uit de bron.
+
+tasks:
+  - task: "Selectiedag stock uitvoeren met AS Adventure"
+    owner: farah
+    due: 2026-03-09
+    status: open
+    needs_decision: false
+  - task: "Shoot uitvoeren (buiten, city-vibe, 4 modellen x 2 silhouetten)"
+    owner: farah
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Retroplanning/backplanning opstellen en delen met AS Adventure"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Sessie plannen met copywriter Johanna (AS Adventure) over art direction en storytelling"
+    owner: farah
+    due: null
+    status: open
+    needs_decision: false
+
+files: {}
+
+# BELANGRIJK: de datums hierboven (selectie 9/3, shoot medio maart, live begin-half april
+# 2026) komen letterlijk uit het bronmateriaal van 13 februari 2026. Vandaag is het
+# 16 augustus 2026 - deze planning ligt dus ver in het verleden. Dit project is
+# vermoedelijk al afgerond of sterk gewijzigd. Status en taken hierboven zijn NIET
+# bevestigd als actuele werkelijkheid; ze zijn de laatst bekende stand uit de bron.
+# Eerste actie: navragen bij Tore/Farah wat er werkelijk is gebeurd.
