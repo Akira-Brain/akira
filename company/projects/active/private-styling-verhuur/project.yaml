@@ -1,0 +1,47 @@
+project: private-styling-verhuur
+title: "Private styling met outfitverhuur - dienst en prijszetting"
+tenant: company
+status: active
+priority: now
+next_step: "Kaderingsantwoord opstellen voor merken die vragen stellen over verhuur van gifte stukken"
+next_step_owner: tore
+updated: 2026-07-02
+
+people: [farah, luna]
+waiting_for: null
+deadline: null
+tags: [commercieel, verhuur, pricing]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: scoping
+
+tasks:
+  - task: "Kaderingsantwoord opstellen voor merken over het verhuren van gifte stukken"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Uitwerken hoe het risico op dure stukken in de verhuurprijs verrekend wordt"
+    owner: null
+    due: null
+    status: open
+    needs_decision: true
+  - task: "Verhuurprijs en waarborg door de canon-queue laten bevestigen"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: true
+
+files: {}
+
+# De dienst: one-on-one private styling en fitting bij het atelier, met een startprijs,
+# plus een verhuurprijs voor de outfit.
+#
+# Voorgestelde bedragen staan in de canon-queue en zijn nog GEEN canon: verhuur 300 euro
+# per outfit, waarborg 150 euro cash bij aankomst. Voor de stock sale: zonder kaartje
+# 50 procent, met kaartje min 30 procent.
+#
+# Het open punt dat in de vergadering expliciet bleef staan: het risico op dure stukken
+# moet in de prijs verrekend zitten, en daar is nog niet over beslist.

@@ -1,0 +1,46 @@
+project: bel-en-bo
+title: "Bel & Bo - tv-spot afgesprongen, heraanpak via consultancy"
+tenant: company
+status: waiting
+priority: next
+next_step: "Na de scenariokeuze: met Jasmijn een consultancy-presentatie uitwerken met Bel & Bo als case"
+next_step_owner: tore
+updated: 2026-07-16
+
+client: bel-en-bo
+people: [jasmijn]
+waiting_for: "eigen scenariokeuze in positionering-starmaker; Jasmijn wil pas daarna aan de case werken"
+deadline: null
+tags: [merken, consultancy, rebranding]
+
+commercial:
+  quoted: 6000
+  accepted: null
+  status: lost
+  # Aanvraag was een nationale tv-spot binnen hun rebranding, zeer last minute.
+  # Offerte lag rond 6k met kadering van de meerwaarde; zij hadden ongeveer 2k voor ogen.
+  # Afgesprongen op waardeperceptie, niet op kwaliteit: de kaderingsmail kreeg
+  # enthousiaste reacties van twee mensen bij het agency.
+
+tasks:
+  - task: "Consultancy-presentatie uitwerken met Bel & Bo als case, samen met Jasmijn"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Checken hoe financieel gezond Bel & Bo is voor er een commerciele geste overwogen wordt"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Beslissen of een opdracht aan lagere prijs als opstapje aanvaardbaar is en onder welke voorwaarde"
+    owner: null
+    due: null
+    status: open
+    needs_decision: true
+
+files: {}
+
+# Contactkanaal loopt via Focus Advertising (agency, Kortrijk).
+# Jasmijn's suggestie bij een eventuele commerciele geste: onderhandel een meeting met
+# marketing als voorwaarde, en maak expliciet zichtbaar wat binnen en buiten scope viel.

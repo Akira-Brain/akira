@@ -1,0 +1,51 @@
+project: ecosysteem
+title: "Partnernetwerk opbouwen"
+tenant: company
+status: active
+priority: next
+next_step: "Afbakenen waar de scope begint en eindigt, daarna een longlist profielen maken"
+next_step_owner: tore
+updated: 2026-07-16
+
+people: [jasmijn]
+waiting_for: null
+deadline: null
+tags: [strategie, partners, ecosysteem]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: n.v.t.
+
+tasks:
+  - task: "Scope afbakenen: welke profielen horen erbij, waar houdt het op"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: true
+  - task: "Longlist partners maken en koffie beginnen drinken"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Social media manager vinden of zelf opleiden - niemand bekend op het vereiste niveau"
+    owner: luna
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Samenwerkingsmodel per partner kiezen: doorverwijzen, in het team trekken, of commissie"
+    owner: null
+    due: null
+    status: open
+    needs_decision: true
+
+files: {}
+
+# Waarom nu en niet later: als de opportuniteit zich aandient is het te laat om het
+# netwerk dan pas op te bouwen. Dat was Jasmijn's expliciete ervaring.
+#
+# Het risico dat erbij hoort: slecht werk van een partner straalt op ons af. Daarom
+# drie modellen met verschillend gewicht - een naam doorgeven zonder garantie, een
+# partner in het team trekken en zelf controleren en factureren, of commissie op
+# elkaars fee. Sandrine en Emma zijn eerdere voorbeelden waar een videograaf niet
+# hetzelfde kwaliteitsniveau leverde.

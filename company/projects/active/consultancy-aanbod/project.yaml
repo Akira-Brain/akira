@@ -1,0 +1,42 @@
+project: consultancy-aanbod
+title: "Consultancy-aanbod voor merken ontwikkelen"
+tenant: company
+status: active
+priority: next
+next_step: "Trapsgewijs aanbod uitwerken (light, medium, intensief) op basis van wat we al gedaan hebben"
+next_step_owner: tore
+updated: 2026-07-16
+
+people: [jasmijn]
+waiting_for: null
+deadline: null
+tags: [commercieel, merken, consultancy]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: scoping
+
+tasks:
+  - task: "Trapsgewijs aanbod uitwerken: light, medium, intensief, met per trede de vraag, deliverable en output"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Beeld-audit en collectie-audit uitwerken als concrete instapdiensten"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Bepalen in welke vorm het aanbod gepresenteerd wordt (geen standaard powerpoint)"
+    owner: null
+    due: null
+    status: open
+    needs_decision: true
+
+files: {}
+
+# Dit is volgens Tore het aanbod dat van alle nieuwe pistes het hardst resoneert.
+# Jasmijn's advies: niet overdrijven met ontwikkelen. Enter het gesprek op cases,
+# op wat we al gedaan hebben, en pas het aanbod aan op de realiteit van de klant.
+# Een dienst die je kunt tonen is geloofwaardiger dan een dienst die je bedenkt.

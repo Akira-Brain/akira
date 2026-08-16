@@ -1,0 +1,42 @@
+project: stock-digitalisering
+title: "Stock digitaliseren in Checkroom"
+tenant: company
+status: active
+priority: now
+next_step: "Instructiedocument waardebepaling afwerken zodat studenten zelfstandig kunnen digitaliseren"
+next_step_owner: tore
+updated: 2026-07-02
+
+people: [luna]
+waiting_for: null
+deadline: null
+tags: [operations, stock, verhuur]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: n.v.t.
+
+tasks:
+  - task: "Instructiedocument waardebepaling voor studenten afwerken"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Designer, gifting en avondjurken als eerste digitaliseren"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Testen of foto-album plus ChatGPT Vision de velden kan prepopuleren voor bulk-upload"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Barcodes en rek-nummering: uitgesteld tot na de volgende stock sale"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+
+files: {}

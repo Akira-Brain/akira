@@ -1,0 +1,42 @@
+project: positionering-starmaker
+title: "Herpositionering - Starmaker voor mensen en merken"
+tenant: company
+status: active
+priority: now
+next_step: "Finaal scenario uitschrijven met pros en cons (vermoedelijk hybride boutique agency + methodeschool + ecosysteem)"
+next_step_owner: tore
+updated: 2026-07-16
+
+people: [jasmijn]
+waiting_for: null
+deadline: null
+tags: [strategie, merk, positionering]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: n.v.t.
+
+tasks:
+  - task: "Finaal scenario bepalen en uitschrijven, met pros en cons"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: true
+  - task: "Beslissen welke termen bij Starmaker horen en welke niet"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: true
+  - task: "Copywriter zoeken voor het master copy document"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Cases selecteren en vorm bepalen (Torst voor merken; Farah en Fien voor mensen)"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+
+files: {}

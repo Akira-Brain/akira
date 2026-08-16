@@ -1,0 +1,48 @@
+project: locomotieven-prospectie
+title: "Locomotieven - prospectie bij agencies en bureaus"
+tenant: company
+status: active
+priority: next
+next_step: "Bestaande lijst prioriteren en de eerste pitchgesprekken vastleggen"
+next_step_owner: tore
+updated: 2026-07-16
+
+people: [jasmijn]
+waiting_for: null
+deadline: null
+tags: [commercieel, prospectie, sales]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: n.v.t.
+
+tasks:
+  - task: "Longlist locomotieven prioriteren - de lijst bestaat al maar is te lang"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Halve dag per week blokkeren voor prospectie"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: true
+  - task: "Pitch klaarmaken: Starmaker voor mensen en merken, met cases per type gesprekspartner"
+    owner: null
+    due: null
+    status: open
+    needs_decision: false
+
+files: {}
+
+# Locomotieven = agencies en bureaus die je binnenhalen bij hun eindklanten, in plaats van
+# dat je zelf elke eindklant moet vinden. Jasmijn werkt zelf zo: creatieve agencies trekken
+# haar binnen op mode- en luxeprojecten waar hun interne strategen die specialisatie missen.
+#
+# De discipline is het echte punt. Zonder vast moment gebeurt prospectie niet en blijf je
+# op het bestaande elan doorlopen. Ritme is belangrijker dan volume: een gesprek per maand
+# dat doorgaat is meer waard dan een longlist die blijft liggen.
+#
+# Bijkomende regel uit het gesprek: in zo'n gesprek niet alleen jezelf voorstellen maar
+# vooral luisteren - waar zijn zij mee bezig, hoe ziet hun team eruit, wat is moeilijk.
