@@ -29,8 +29,18 @@ de enige plek waar hij thuishoort.
 
 Claude praat rechtstreeks met GitHub via de gehoste MCP-server van GitHub. Geen token
 aanmaken, geen OpenAPI-schema, geen vervaldatum. Captures landen als GitHub Issue met
-label `capture`, precies zoals bij de GPT-variant, en worden daarna gerouteerd met de
-skill `capture-intake`.
+label `capture`.
+
+Vanaf dat moment gebeurt de rest **automatisch**: de workflow
+`.github/workflows/capture-intake.yml` routeert de capture naar de juiste plek in de repo,
+regenereert het BOARD, meldt op het issue waar alles geland is en sluit het. Niemand hoeft
+iets te starten. Je praat, en het staat erin.
+
+Blijft er iets onduidelijk, dan blijft het issue open staan met een comment die zegt wat
+er niet geplaatst kon worden. Dat komt terug in de weekly review.
+
+**Eenmalige voorwaarde:** de repo heeft een secret `ANTHROPIC_API_KEY` nodig
+(Settings -> Secrets and variables -> Actions). Zonder die sleutel draait de workflow niet.
 
 ## Twee connectors, elk apart afgeschermd
 
