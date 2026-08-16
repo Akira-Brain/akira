@@ -44,6 +44,10 @@ jobs:
           # Wil je liever losse API-facturatie, vervang deze regel dan door:
           #   anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Zonder expliciete github_token probeert de action een OIDC-token in te
+          # wisselen bij de Claude GitHub App, en faalt hij als die app niet op de
+          # repo geinstalleerd is. Het ingebouwde workflow-token volstaat hier.
+          github_token: ${{ github.token }}
           prompt: |
             Je routeert een binnengekomen capture in de Akira-repo.
 
