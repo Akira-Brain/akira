@@ -88,17 +88,25 @@ routeert.
 
 ## Wat niet via Chatty kan
 
-Twee dingen blijven bewust buiten het dagelijkse praten, omdat ze schrijfrechten op de
-canon vereisen:
+Drie dingen blijven bewust buiten het dagelijkse praten:
 
 - **Canon goedkeuren.** Voorstellen voor prijzen, werkwijzen en positionering verzamelen
-  zich in `company/canon-queue.md`. Die goedkeuren doe je in een werksessie met een AI
-  die wél in de repo mag schrijven, samen met Farah.
+  zich in `company/canon-queue.md`. Er is geen geautomatiseerde beoordeling meer, ook niet
+  via de API: goedkeuren doe je met "akkoord" tegen een AI-sessie die dan de wijziging
+  doorvoert, samen met Farah.
+- **Volledige vergadertranscripten** (bijvoorbeeld van Plaud). Te lang voor een GitHub
+  issue (die zijn beperkt tot 65.536 tekens - meerdere van jullie eigen transcripten
+  zaten daar al overheen) en te veel oordeel voor de goedkope automatische route. Die
+  verwerk je in een live sessie op je eigen Claude-abonnement (Claude Code, of een andere
+  sessie met bevestigde schrijftoegang tot de repo), volgens
+  `system/skills/meeting-processing.md`. Geen Action, geen API-kosten voor dat werk;
+  Chatty en de automatische routering blijven puur voor korte dagelijkse captures.
 - **De wekelijkse review.** Verouderde statussen nalopen, openstaande captures afhandelen,
   learnings met genoeg bewijs promoveren. Skill: `system/skills/weekly-review.md`.
 
-Dat is werk van een half uur per week, geen dagelijkse handeling. Het dagelijkse werk
-loopt volledig via Chatty.
+Dat is samen misschien een uur per week, geen dagelijkse handeling. Het dagelijkse werk
+loopt volledig via Chatty, en de API-kosten blijven daardoor beperkt tot precies dat:
+korte captures routeren, een paar cent per stuk.
 
 ## Wat je in de gaten houdt
 

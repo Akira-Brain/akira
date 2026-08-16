@@ -1,13 +1,24 @@
 name: Capture intake
 
 # Routeert automatisch elke nieuwe capture-issue naar zijn plek in de repo.
-# Niemand hoeft hiervoor iets te doen: Farah of Tore praat met Claude, de capture landt
+# Niemand hoeft hiervoor iets te doen: Farah of Tore praat met Chatty, de capture landt
 # als issue, en deze workflow verwerkt hem binnen enkele minuten.
 #
+# WAT DIT WEL EN NIET IS. Dit is de goedkope, onbewaakte route voor korte dagelijkse
+# captures (taken, projectstatus, ideeen). Twee dingen gebeuren hier bewust NIET:
+#   - Lange vergadertranscripten. Die vragen te veel oordeel (welke passages horen bij
+#     welk project, wat is gevoelig, wat is een echte beslissing) voor een goedkoop
+#     model met een turnlimiet. Die verwerkt een mens samen met Claude in een live
+#     sessie op het Claude-abonnement, volgens system/skills/meeting-processing.md, en
+#     commit rechtstreeks. Geen Action, geen API-kosten voor dat werk.
+#   - Canon goedkeuren. Elke wijziging die deze workflow als canon-relevant herkent,
+#     schrijft ze als voorstel in company/canon-queue.md en stopt daar. Er is geen
+#     geautomatiseerde beoordelingsstap meer: canon wordt uitsluitend door Tore en Farah
+#     goedgekeurd, in gewone taal tegen een AI-sessie die dan de wijziging doorvoert.
+#
 # VEILIGHEID: deze workflow commit uitsluitend paden uit de allowlist hieronder.
-# knowledge/, policies/, company.yaml en system/ worden nooit gestaged en kunnen dus
-# ook niet gewijzigd worden, ook niet als het model zich vergist of als iemand
-# instructies in een issue-tekst zet. Canon blijft mensenwerk via de canon-queue.
+# company/knowledge/, policies/, company.yaml en system/ worden NOOIT gestaged door
+# deze workflow, zonder uitzondering - er is geen code-pad meer dat dat zou toelaten.
 
 on:
   issues:
@@ -133,17 +144,14 @@ jobs:
             company/knowledge/, company/policies/, company/company.yaml, system/
 
             Raakt de capture een prijs, een werkwijze, positionering of andere
-            bedrijfswaarheid, wijzig de canon dan NIET zelf. Schrijf in plaats daarvan
-            een bestand `.canon-proposal.md` met per voorstel:
-
-              BESTAND: company/knowledge/{pad}.md
-              HUIDIG: {wat er nu staat, of "bestaat nog niet"}
-              VOORSTEL: {de voorgestelde waarde of tekst}
-              AANLEIDING: {letterlijk citaat uit de capture}
-              EVIDENCE: {projecten of eerdere beslissingen die dit dragen, of "geen"}
-
-            Een tweede beoordeling kijkt daarnaar. Raakt de capture geen canon, maak dat
-            bestand dan niet aan.
+            bedrijfswaarheid, wijzig de canon dan NIET zelf en maak ook geen apart
+            beoordelingsbestand aan. Voeg in plaats daarvan een nieuw item toe aan
+            `company/canon-queue.md`, in exact hetzelfde format als de bestaande items
+            daar (kopieer de vorm van het laatste item): een oplopend V-nummer, het
+            doelbestand in `knowledge/`, huidig versus voorstel, rationale, een
+            evidence-verwijzing naar deze capture, en de regel "Nodig: akkoord van Tore
+            en Farah". Dit is de enige route naar canon. Er is geen geautomatiseerde
+            beoordeling meer: alles wat hier terechtkomt wacht op een mens.
 
             ## Regels die zwaar wegen
 
@@ -195,77 +203,6 @@ jobs:
             echo "beschermde zones onaangeroerd"
           fi
 
-      # Draait alleen als de routering daadwerkelijk canon wil raken. De meeste
-      # captures gaan over taken en projectstatus en komen hier nooit langs.
-      - name: Is er canon voorgesteld?
-        id: canon
-        run: |
-          if [ -f .canon-proposal.md ]; then
-            echo "voorstel=true" >> "$GITHUB_OUTPUT"
-            echo "canon-voorstel gevonden, beoordeling volgt"
-          else
-            echo "voorstel=false" >> "$GITHUB_OUTPUT"
-            echo "geen canon geraakt"
-          fi
-
-      - name: Beoordeel het canon-voorstel
-        if: steps.canon.outputs.voorstel == 'true'
-        uses: anthropics/claude-code-action@main
-        with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          github_token: ${{ github.token }}
-          claude_args: |
-            --model claude-haiku-4-5-20251001
-            --max-turns 15
-            --allowedTools "Read,Write,Edit,Glob,Grep"
-          prompt: |
-            Je beoordeelt of een voorgestelde wijziging aan de bedrijfscanon van Akira
-            doorgevoerd mag worden. Je bent hier expres streng: canon is wat het bedrijf
-            als waar beschouwt en waar offertes op gebaseerd worden.
-
-            Het voorstel staat in `.canon-proposal.md`. De bestaande canon staat in
-            `company/knowledge/`. Lees beide.
-
-            ## Wanneer je GOEDKEURT
-
-            - Er is een beslissing genomen, niet een gedachte geuit. "We doen dit
-              voortaan zo" is een beslissing. "Volgens mij moeten we..." of "we zouden
-              eigenlijk..." is dat niet.
-            - De aanleiding is een letterlijk citaat waarin dat besluit te horen is.
-            - Het spreekt bestaande canon niet tegen, of het vervangt die expliciet.
-
-            ## Wanneer je AFKEURT
-
-            - Het is een mening, een idee of hardop denken.
-            - Er is geen evidence en het gaat over geld of werkwijze.
-            - Het spreekt bestaande canon tegen zonder dat iemand dat benoemt.
-            - Je twijfelt. Bij twijfel keur je af: een afgekeurd voorstel komt terug,
-              een verkeerd goedgekeurde prijs gaat de deur uit in een offerte.
-
-            ## Prijzen
-
-            Voorstellen die een bedrag in `company/knowledge/pricing/` wijzigen keur je
-            NOOIT goed, hoe duidelijk de beslissing ook lijkt. Die zet je als voorstel in
-            `company/canon-queue.md` voor Tore en Farah. Een verkeerde prijs kost geld
-            buiten de deur; dat is de enige uitzondering.
-
-            ## Wat je doet
-
-            Bij goedkeuring: voer de wijziging door in `company/knowledge/`. Zet
-            `status: canonical`, `approved_by: [akira-review]`, `updated: 2026-08-16`.
-            Bestond er een oude waarde, bewaar die in een `history:`-blok met verwijzing.
-
-            Bij afkeuring: schrijf het in plaats daarvan als hypothese in
-            `company/working/learnings/{slug}.md` met `status: hypothesis` en de
-            aanleiding erbij. Raak `company/knowledge/` niet aan.
-
-            Schrijf tot slot `.canon-verdict.md`. De EERSTE regel is exact een van:
-              VERDICT: GOEDGEKEURD
-              VERDICT: AFGEKEURD
-              VERDICT: NAAR QUEUE
-            Daaronder in twee of drie zinnen waarom, in gewone taal, zodat iemand die
-            de capture niet gelezen heeft het begrijpt.
-
       # Het board is een gegenereerde view (beslissing D5). Een model dat er stukjes
       # in bijwerkt laat het stil uit de pas lopen met de yaml: de eerste versie miste
       # alle deadlines en telde captures verkeerd, waardoor de daily brief meldde dat
@@ -287,19 +224,14 @@ jobs:
           git config user.name "akira-capture-bot"
           git config user.email "actions@github.com"
           # Expliciete paden, nooit git add -A. Dit is de eigenlijke grens.
+          # company/knowledge/ staat hier bewust NIET bij en wordt door deze workflow
+          # nooit gestaged, zonder uitzondering. Canon-voorstellen landen in
+          # canon-queue.md (wel toegestaan) en wachten daar op een mens.
           git add -- \
             company/projects company/ideas company/working company/decisions \
             company/inbox company/people company/clients \
             company/BOARD.md company/canon-queue.md personal 2>/dev/null || true
-          # company/knowledge/ wordt uitsluitend hier gestaged, en alleen wanneer de
-          # beoordeling expliciet GOEDGEKEURD zei. De routeringsstap kan er dus nooit
-          # bij, ook niet bij een vergissing of een injectiepoging.
-          if [ -f .canon-verdict.md ] && [ "$(head -n 1 .canon-verdict.md)" = "VERDICT: GOEDGEKEURD" ]; then
-            git add -- company/knowledge 2>/dev/null || true
-            echo "canon goedgekeurd en gestaged"
-          else
-            git checkout -- company/knowledge 2>/dev/null || true
-          fi
+          git checkout -- company/knowledge 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "geen wijzigingen om te committen"
@@ -321,12 +253,6 @@ jobs:
             gh issue comment ${{ github.event.issue.number }} \
               --body "De routering liep vast: er is geen rapport gegenereerd. Dit issue blijft open."
             exit 0
-          fi
-
-          # Canon-oordeel eerst, dat is het belangrijkste dat iemand moet zien.
-          if [ -f .canon-verdict.md ]; then
-            gh issue comment ${{ github.event.issue.number }} \
-              --body "$(printf '### Canon-beoordeling\n\n'; cat .canon-verdict.md)"
           fi
 
           gh issue comment ${{ github.event.issue.number }} --body-file .capture-report.md
