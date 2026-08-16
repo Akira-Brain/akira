@@ -8,11 +8,10 @@ status: open
 
 ## Ruw
 
-Bron: GitHub issue #1 ("2026-08-16 - Luna - accessoires sourcen voor shoot volgende week"),
-binnengekomen via Farah's GPT.
+Bron: GitHub issue #1 en #2 (dezelfde capture, twee bronnen):
+- Issue #1: "2026-08-16 - Luna - accessoires sourcen voor shoot volgende week" (source: Luna)
+- Issue #2: "2026-08-16 - Tore - test Haiku, gesprek met Luna" (source: Tore)
 
-> source: Luna
->
 > Ik heb net met Luna gesproken. Zij gaat accessoires sourcen voor de shoot van volgende
 > week, dat moet tegen donderdag klaar zijn. En we twijfelen nog of we een tweede fitting
 > inplannen, dat moet Farah beslissen.
