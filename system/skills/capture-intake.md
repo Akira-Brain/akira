@@ -10,6 +10,27 @@ het issue, deze skill maakt er bedrijfsgeheugen van.
 
 Draai dit dagelijks als er captures zijn, en in elk geval bij de weekly review.
 
+## Waarom dit met de hand gebeurt
+
+Drie redenen, in volgorde van gewicht.
+
+**Het moet structureel.** Routeren betekent bestanden schrijven. De credential waarmee
+captures worden aangemaakt heeft bewust geen enkel schrijfrecht op bestanden. Zou de
+capture-agent zijn eigen captures kunnen routeren, dan bestaat de grens niet meer.
+
+**Hier zit de kwaliteitspoort.** Routeren is het moment waarop iemand beslist dat iets
+een hypothese is en geen beslissing, of dat een prijs buiten `knowledge/` blijft. Dat is
+het capture-naar-canon-principe zelf. Automatiseren verwijdert de poort, het versnelt
+hem niet.
+
+**Het is onbewezen.** Zolang niemand heeft gezien hoe de classificatie faalt, is
+onbewaakt routeren de snelste weg naar verkeerde eigenaars en verzonnen projecten.
+
+Automatiseren mag later, na ongeveer 20 tot 30 captures die met de hand correct
+gerouteerd zijn. Splits het dan: het mechanische deel (een taak naar het juiste
+project.yaml) mag automatisch, het oordeelsdeel (learnings, beslissingen, alles wat
+canon raakt) blijft menselijk.
+
 ## Input
 
 Openstaande issues met label `capture` in `akira`. Ophalen via de GitHub-

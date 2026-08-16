@@ -1,7 +1,29 @@
-# Capture-pad via Claude (variant A2)
+# Capture-pad via Claude (variant A2) - GEKOZEN PAD
 
-Versie 0.1 - 2026-08-16. Alternatief voor de Custom GPT uit `../chatgpt-capture/`.
-Zelfde eindresultaat, aanzienlijk minder opzetwerk.
+Versie 0.2 - 2026-08-16. Dit is het gekozen capture-pad voor Akira.
+De Custom GPT in `../chatgpt-capture/` blijft bestaan als terugval.
+
+## VOORWAARDE: de repo moet in een organisatie staan
+
+Zolang Akira op een persoonlijk GitHub-account staat, werkt dit pad alleen veilig voor
+de eigenaar zelf. GitHub laat op een private repo van een persoonlijk account namelijk
+geen read-only collaborators toe: **iedereen die je toevoegt krijgt schrijfrechten op
+alle bestanden**. Farah of een stagiair zou dan in `knowledge/` en `policies/` kunnen
+schrijven, en precies dat is wat dit ontwerp wil voorkomen.
+
+Verhuis de repo daarom naar een GitHub-organisatie voordat je iemand anders aansluit.
+Dat is gratis, behoudt historie en issues, en laat rollen per persoon toe:
+
+| Wie | Rol | Mag |
+|---|---|---|
+| Farah, studenten, stagiairs | **Read** | issues aanmaken (captures), bestanden lezen, niets pushen |
+| Luna, als zij captures beheert | **Triage** | daarnaast labelen en sluiten |
+| Tore | **Admin** | alles, inclusief de routering |
+
+Met rol Read maakt het niet meer uit welke MCP-URL iemand in zijn Claude plakt: ook de
+volledige server kan dan geen bestanden schrijven, omdat het account het niet mag. De
+grens verschuift van "goed geconfigureerd" naar "GitHub staat het niet toe", en dat is
+de enige plek waar hij thuishoort.
 
 ## Wat dit is
 
@@ -28,8 +50,10 @@ server, inclusief schrijfrechten op bestanden, en dan kan de sessie in `knowledg
 De tweede connector is alleen nodig voor de daily brief. Laat je hem weg, dan kan Claude
 wel captures wegschrijven maar het BOARD niet lezen.
 
-## Opzetten (ongeveer vijf minuten)
+## Opzetten (ongeveer vijf minuten per persoon)
 
+0. Alleen als er iemand anders dan de eigenaar aansluit: staat de repo in een
+   organisatie en heeft die persoon rol Read of Triage? Zie de voorwaarde bovenaan.
 1. Claude.ai -> **Settings -> Connectors -> Add custom connector**.
 2. Plak de eerste URL uit de tabel. Naam: `Akira - captures`. Opslaan.
 3. Klik **Connect** en log in bij GitHub in het venster dat opent. Keur de toegang goed.
