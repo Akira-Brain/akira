@@ -115,9 +115,10 @@ agenda; het faalsymptoom is "Chatty doet niks meer" en dat is verwarrend voor Fa
 verandert regelmatig. Loopt stap 3 vast op het abonnement, dan is dat het moment om
 pad B (mailen) te proberen in plaats van hierin te blijven duwen.
 
-**De routering gebeurt automatisch** via de workflow. Faalt die, dan blijven captures
-dat dagelijks of wekelijks, maar doe het: een issue-lijst die volloopt is dezelfde
-faalwijze als een inbox die niemand leest.
+**De routering gebeurt automatisch** via de workflow `capture-intake`. Faalt die, dan
+blijft het issue openstaan met een comment die zegt wat er misging. Een issue-lijst die
+volloopt is hetzelfde faalsignaal als een inbox die niemand leest: kijk dan naar de
+workflow, niet naar de mensen.
 
 ## Wat dit bewust niet doet
 
