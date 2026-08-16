@@ -22,9 +22,10 @@ issues wel. De issue-route geeft dus een echte, afgedwongen grens in plaats van 
 afspraak in een prompt. De inbox-map blijft bestaan voor captures die via Tore of via
 pad B binnenkomen.
 
-Voor Farah is A1 de route, omdat A2 op claude.ai niet verbindt. A1 heeft als bijkomend
-is A2 korter en is er niets te onderhouden. Zo nee, dan is A1 de route, want daar maakt
-Tore het token aan en raakt Farah GitHub nooit aan.
+Voor Farah is A1 de route, omdat A2 op claude.ai niet verbindt (zie
+`integrations/claude-capture/README.md`). A1 heeft bovendien een voordeel dat we eerst
+als nadeel lazen: Tore maakt het token aan, waardoor Farah GitHub nooit hoeft aan te
+raken en er dus ook geen account voor haar nodig is.
 
 ## Wat al vaststaat, ongeacht het pad
 
