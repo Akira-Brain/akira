@@ -6,15 +6,24 @@ Versie 0.4 - 2026-08-16.
 `../chatgpt-capture/`. Dit document blijft staan zodat niemand hetzelfde opnieuw
 uitzoekt: hieronder staat waarom het niet werkte en wat het alternatief zou zijn.
 
-## Waarom claude.ai-connectors hier niet werken
+## Waarom de CUSTOM connector hier niet werkt
 
-Getest op 2026-08-16: beide connectors falen bij het verbinden met de melding
+Getest op 2026-08-16: beide custom connectors falen bij het verbinden met de melding
 *"Automatic client registration isn't supported. Edit the connector and add an OAuth
 Client ID."*
 
 Oorzaak: GitHub's gehoste MCP-server ondersteunt geen dynamic client registration, en
-de connector-interface van claude.ai kent alleen OAuth (met optioneel een eigen client
-ID en secret). Er is daar geen veld voor een gewone Authorization-header.
+de custom-connector-interface van claude.ai kent alleen OAuth (met optioneel een eigen
+client ID en secret). Er is daar geen veld voor een gewone Authorization-header.
+
+**Belangrijke nuance, later toegevoegd:** dit geldt alleen voor het zelf toevoegen van
+een custom connector. Claude heeft ook een GitHub-connector in zijn eigen directory, en
+die brengt een vooraf geregistreerde OAuth-client mee. Die probeert dus nooit zichzelf
+te registreren en loopt niet tegen deze fout aan. Wie via Claude wil werken, gebruikt
+die directory-connector en niet de custom route hieronder.
+
+De eerste versie van dit document concludeerde te breed dat "claude.ai-connectors niet
+werken". Dat klopte niet: één manier van toevoegen werkte niet.
 
 Wie het toch via claude.ai wil laten werken, moet een eigen GitHub OAuth App
 registreren en de client ID in de connector zetten. Daarvoor is de callback-URL van
