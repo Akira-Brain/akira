@@ -13,6 +13,9 @@ erbovenop en zijn inwisselbaar. De intelligentie van het atelier hoort bij het a
 Je hoeft deze repo nooit te openen. Je praat met de AI, de AI onderhoudt deze bestanden.
 Dit is de archiefkast, niet het kantoor.
 
+**Sluit je net aan?** Lees `ONBOARDING.md`. Voor iedereen in het atelier is dat twee
+minuten werk: een link openen en zeggen wie je bent.
+
 Wat je kunt vragen:
 
 - "Wat moet ik vandaag weten?" -> de daily brief
