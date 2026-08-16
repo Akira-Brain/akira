@@ -13,9 +13,12 @@ on:
   issues:
     types: [opened, labeled]
 
+# Een issue dat meteen mét label wordt aangemaakt, vuurt zowel `opened` als
+# `labeled` af. Groeperen per issuenummer met cancel-in-progress zorgt dat er
+# maar een run overblijft.
 concurrency:
-  group: capture-intake
-  cancel-in-progress: false
+  group: capture-intake-${{ github.event.issue.number }}
+  cancel-in-progress: true
 
 jobs:
   route:
@@ -24,6 +27,9 @@ jobs:
     permissions:
       contents: write
       issues: write
+      # De action wisselt een OIDC-token in voor toegang tot de Claude API.
+      # Zonder deze permissie faalt hij met "Could not fetch an OIDC token".
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
