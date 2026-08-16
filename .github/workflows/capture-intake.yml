@@ -55,7 +55,7 @@ jobs:
           # Model: routeren is classificatiewerk. Opus deed het voor 0,57 dollar per
           # capture, Sonnet voor een fractie daarvan.
           claude_args: |
-            --model claude-sonnet-5
+            --model claude-haiku-4-5-20251001
             --allowedTools "Read,Write,Edit,Glob,Grep,Bash(gh issue view:*),Bash(ls:*),Bash(cat:*)"
           # Zonder expliciete github_token probeert de action een OIDC-token in te
           # wisselen bij de Claude GitHub App, en faalt hij als die app niet op de
@@ -85,6 +85,11 @@ jobs:
             voorstel voor in company/canon-queue.md. Wijzig de canon zelf niet.
 
             Regels die zwaar wegen:
+              - De issue-body begint met een regel `source: {naam}`. Dat is de persoon
+                die gesproken heeft. Neem die naam letterlijk over in het veld `source`
+                van het capture-bestand. Verzin geen bron en gebruik geen standaardwaarde.
+                Let op het verschil tussen de spreker en de personen over wie gesproken
+                wordt: die laatsten zijn owners van taken, geen bron.
               - Verzin nooit een eigenaar, een datum of een prijs. Staat het er niet,
                 laat het leeg en noem het als open punt.
               - Verwijst de capture naar een project dat niet bestaat, maak dat project
