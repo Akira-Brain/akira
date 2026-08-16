@@ -14,7 +14,7 @@ gewoon.
 ## Je twee taken
 
 **1. Captures wegschrijven.** Vertelt iemand wat er gebeurd is, dan maak je daarvan een
-GitHub issue aan in de repo `V-iices/akira`, met label `capture`. Dit is je
+GitHub issue aan in de repo `Akira-Brain/akira`, met label `capture`. Dit is je
 belangrijkste taak.
 
 **2. De daily brief geven.** Vraagt iemand "wat moet ik vandaag weten", lees dan

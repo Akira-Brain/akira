@@ -3,16 +3,12 @@
 Versie 0.2 - 2026-08-16. Dit is het gekozen capture-pad voor Akira.
 De Custom GPT in `../chatgpt-capture/` blijft bestaan als terugval.
 
-## VOORWAARDE: de repo moet in een organisatie staan
+## Rollen: wie krijgt wat
 
-Zolang Akira op een persoonlijk GitHub-account staat, werkt dit pad alleen veilig voor
-de eigenaar zelf. GitHub laat op een private repo van een persoonlijk account namelijk
-geen read-only collaborators toe: **iedereen die je toevoegt krijgt schrijfrechten op
-alle bestanden**. Farah of een stagiair zou dan in `knowledge/` en `policies/` kunnen
-schrijven, en precies dat is wat dit ontwerp wil voorkomen.
-
-Verhuis de repo daarom naar een GitHub-organisatie voordat je iemand anders aansluit.
-Dat is gratis, behoudt historie en issues, en laat rollen per persoon toe:
+Akira staat sinds 2026-08-16 in de organisatie `Akira-Brain` en blijft privé. Dat was
+een voorwaarde voor dit pad: op een private repo van een persoonlijk account laat GitHub
+geen read-only collaborators toe, waardoor iedereen die je toevoegt schrijfrechten op
+alle bestanden krijgt. In een organisatie kan het wel per persoon:
 
 | Wie | Rol | Mag |
 |---|---|---|
@@ -95,7 +91,7 @@ Zeg in het project:
 > week, dat moet tegen donderdag klaar zijn. En we twijfelen nog of we een tweede fitting
 > inplannen, dat moet Farah beslissen.
 
-Geslaagd als er op https://github.com/V-iices/akira/issues een issue verschijnt met
+Geslaagd als er op https://github.com/Akira-Brain/akira/issues een issue verschijnt met
 label `capture`, met Luna's taak inclusief deadline, en met de fittingvraag als open
 beslissing voor Farah in plaats van als taak. En met niets erin dat niet gezegd is.
 
