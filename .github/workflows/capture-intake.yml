@@ -91,6 +91,7 @@ jobs:
           # capture, Sonnet voor een fractie daarvan.
           claude_args: |
             --model claude-haiku-4-5-20251001
+            --max-turns 30
             --allowedTools "Read,Write,Edit,Glob,Grep,Bash(gh issue view:*),Bash(ls:*),Bash(cat:*)"
           # Zonder expliciete github_token probeert de action een OIDC-token in te
           # wisselen bij de Claude GitHub App, en faalt hij als die app niet op de
@@ -214,6 +215,7 @@ jobs:
           github_token: ${{ github.token }}
           claude_args: |
             --model claude-haiku-4-5-20251001
+            --max-turns 15
             --allowedTools "Read,Write,Edit,Glob,Grep"
           prompt: |
             Je beoordeelt of een voorgestelde wijziging aan de bedrijfscanon van Akira
