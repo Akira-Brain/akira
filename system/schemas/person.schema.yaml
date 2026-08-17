@@ -9,6 +9,13 @@ role: "management Selah Sue"
 organization: "..."
 channel_preference: email       # email | whatsapp | telefoon | slack
 email: "..."                    # zakelijk contact mag; privenummers -> vault
+
+# Alleen bij type: internal. Bepaalt wat deze persoon in de gegenereerde weergaven ziet.
+# Wat elke rol betekent staat in system/access.yaml; hier staat wie hem heeft, en dit is
+# de enige plek waar dat staat. Ontbreekt het veld, dan geldt `atelier` - de smalste rol,
+# want standaard dicht.
+toegang: atelier                # administrator | atelier
+
 tags: [muziek, management]
 
 notes:                          # append-only, nieuwste eerst

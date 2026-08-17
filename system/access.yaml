@@ -1,0 +1,67 @@
+# access.yaml - wie ziet wat
+#
+# Dit bestand definieert wat een rol BETEKENT. Wie welke rol heeft staat niet hier maar
+# op de persoon zelf (`toegang:` in company/people/{slug}.yaml). Een feit hoort op een
+# plek: stond het op twee plekken, dan lopen ze uit elkaar en weet niemand welke geldt.
+#
+# STANDAARD IS DICHT. Staat een bron niet bij `include`, dan komt hij niet in de uitvoer
+# voor die rol - ook niet als iemand later een nieuw veld of een nieuwe map toevoegt.
+# Dat is bewust. Tot 2026-08-17 werkte de prijsafscherming precies andersom: prijzen
+# lekten niet omdat generate-board.py het veld `commercial` toevallig nooit las. Er was
+# geen regel die dat afdwong. Een enkele toevoeging als "toon offertebedrag per project"
+# had elke stagiair vanaf dat moment de bedragen laten lezen.
+#
+# `betekent` is publieke tekst: die komt letterlijk op de site en in system/docs/TOEGANG.md
+# te staan, zodat iedereen kan lezen wat zijn eigen rol inhoudt zonder het te moeten vragen.
+
+versie: 1
+updated: 2026-08-17
+
+rollen:
+
+  administrator:
+    betekent: >-
+      Alles: bedragen, offertes, prijsvoorstellen, ruwe transcripten, en wie toegang heeft.
+    include: ["**"]
+
+  atelier:
+    betekent: >-
+      De volledige projectrealiteit - projecten, taken, mensen, klanten, kennis en
+      weekplannen. Geen bedragen.
+    include:
+      - company/BOARD.md
+      - company/projects/active/*/project.yaml
+      - company/projects/active/*/journal/*.md
+      - company/projects/active/*/handoff.md
+      - company/projects/active/*/brief.md
+      - company/people/*.yaml
+      - company/clients/*/client.yaml
+      - company/knowledge/**
+      - company/working/learnings/*.md
+      - company/decisions/**
+      - company/rituals/**
+    exclude:
+      # Prijzencanon. De directe reden dat dit bestand bestaat.
+      - company/knowledge/pricing/**
+      # Bevat levende prijsvoorstellen (V-2026-002, -003, -006 dragen bedragen).
+      # Het AANTAL open voorstellen is geen geheim en staat wel op het board.
+      - company/canon-queue.md
+      # Ruwe transcripten: vol bedragen, half afgemaakte uitspraken en onbevestigde
+      # beweringen. Het atelier ziet in plaats daarvan waar een capture GELAND is.
+      - company/inbox/**
+      # Bevat uitgewerkte tarieven (beeld-audit-tarief, masterclass, online-course).
+      - company/ideas/**
+      # Persoonlijke tenants zijn per definitie niet gedeeld - derde wet, tenant-isolatie.
+      - personal/**
+      # Offertes in wording.
+      - company/working/offers/**
+    velden_uit:
+      # Velden die uit een overigens toegestaan bestand worden gestript.
+      project.yaml: [commercial]
+      # Vault-verwijzingen zeggen waar gevoelige klantdata ligt. De verwijzing zelf is
+      # geen gevoelige data, maar hij nodigt uit tot zoeken; hij hoort bij de zaakvoerders.
+      client.yaml: [vault]
+
+# Een derde rol toevoegen kost een blok hierboven plus `toegang:` op de betrokken mensen.
+# Doe dat pas als er een echt verschil is in wat iemand nodig heeft. Een rol die hetzelfde
+# ziet als een bestaande rol is dezelfde rol met twee namen, en dat is puur overhead.

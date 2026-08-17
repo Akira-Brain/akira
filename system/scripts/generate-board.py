@@ -3,17 +3,19 @@
 
 Waarom dit een script is en geen taak voor het model: het board is per ontwerp een
 gegenereerde view (beslissing D5). Liet je een model het bijwerken, dan bewerkt het
-stukjes prozа en loopt de inhoud stil uit de pas met de yaml. Dat gebeurde ook: de
+stukjes proza en loopt de inhoud stil uit de pas met de yaml. Dat gebeurde ook: de
 eerste versie miste deadlines volledig en telde captures verkeerd, waardoor de daily
 brief meldde dat er geen deadlines waren terwijl er een over zes dagen stond.
 
 Deterministisch, gratis, en altijd in overeenstemming met de bron.
 
-Het script leest op een plek buiten project.yaml: company/rituals/, om te tellen hoe
-lang geleden de laatste maandagplanning en vrijdag wrap-up waren. Dat is bewust. Het
-ritueel dat hier eerder is doodgebloed, deed dat onzichtbaar - niemand miste het,
-want niets telde het. Een directorylisting is deterministisch, dus de garantie van dit
-script blijft overeind.
+Rekenen gebeurt niet hier maar in `akira/analyse.py`, gedeeld met `generate-views.py`.
+Dit bestand doet alleen nog opmaak. Reden: zouden board en site elk hun eigen telling
+hebben, dan lopen ze uit de pas en is er geen bron van waarheid meer maar twee meningen.
+
+LET OP bij wijzigen: Chatty leest dit bestand via een hardgecodeerd pad
+(`company/BOARD.md`) en `system/skills/daily-brief.md` citeert de sectie "Botsingen en
+belasting" letterlijk. De kopstructuur veranderen breekt de daily brief van Farah.
 
 Bekende zwakte: dit script leest alleen company/. Zolang personal/tore/ eigen werk
 draagt, zijn de belastingcijfers voor Tore structureel te laag - het board ziet zijn
@@ -23,56 +25,21 @@ Gebruik:
     python system/scripts/generate-board.py [aantal_open_captures]
 """
 
-import sys
-import glob
 import os
-import re
-from datetime import date, datetime, timedelta
+import sys
+from datetime import timedelta
 
-try:
-    import yaml
-except ImportError:
-    sys.exit("PyYAML ontbreekt: pip install pyyaml")
-
-ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-VANDAAG = date.today()
-VEROUDERD_NA = 14
-DEADLINE_HORIZON = 14
-
-# Drempels voor de sectie "Botsingen en belasting". Bewust hardcoded en bewust laag:
-# dit is een team van vijf, geen configuratie waard. Wie ze wil wijzigen, wijzigt ze
-# hier en legt in de commit uit waarom de werkelijkheid veranderd is.
-CONCENTRATIE_DREMPEL = 0.5   # aandeel projecten met dezelfde next_step_owner
-NU_MAX = 5                   # maximaal aantal projecten op priority: now
-DEKKING_DUE_MIN = 0.5        # onder deze dekking is datumanalyse onbetrouwbaar
-DEKKING_OWNER_MIN = 0.8      # onder deze dekking is verdelingsanalyse onbetrouwbaar
-
-# Weekbelasting per persoon (hoeveel gedateerd werk valt in welke week) is bewust NIET
-# gebouwd. Bij de huidige dekking - 2 van 57 taken heeft een datum - zou die tabel
-# alleen ruis tonen en er gezaghebbend uitzien. Bouw hem zodra de dekking van `due`
-# boven DEKKING_DUE_MIN komt; maandagplanning is het ritueel dat die datums aanmaakt.
-
-
-def lees_projecten():
-    projecten = []
-    patroon = os.path.join(ROOT, "company", "projects", "active", "*", "project.yaml")
-    for pad in sorted(glob.glob(patroon)):
-        with open(pad, encoding="utf-8") as f:
-            data = yaml.safe_load(f) or {}
-        data["_slug"] = os.path.basename(os.path.dirname(pad))
-        projecten.append(data)
-    return projecten
-
-
-def als_datum(waarde):
-    if isinstance(waarde, date):
-        return waarde
-    if isinstance(waarde, str):
-        try:
-            return datetime.strptime(waarde.strip(), "%Y-%m-%d").date()
-        except ValueError:
-            return None
-    return None
+from akira import (
+    ROOT, VANDAAG, VEROUDERD_NA, DEADLINE_HORIZON,
+    CONCENTRATIE_DREMPEL, NU_MAX, DEKKING_DUE_MIN, DEKKING_OWNER_MIN,
+)
+from akira.laden import lees_projecten, als_datum, open_taken
+from akira.analyse import (
+    pct, bereken_dekking, bereken_concentratie, bereken_onbeheerd,
+    bereken_ongedateerd, bereken_overdue, bereken_ketens, bereken_prioriteitsdruk,
+    bereken_verouderd, taken_per_persoon, beslissingen_open, lees_ritmen,
+    tel_open_canon,
+)
 
 
 def tabel(projecten):
@@ -86,183 +53,6 @@ def tabel(projecten):
             f"| {p.get('next_step_owner') or '-'} |"
         )
     return "\n".join(regels) + "\n"
-
-
-def naam(p):
-    """Toonbare naam van een project."""
-    return p.get("title") or p["_slug"]
-
-
-def open_taken(p):
-    """Taken die nog werk zijn: niet done, niet dropped."""
-    return [
-        t for t in (p.get("tasks") or [])
-        if t.get("status") not in ("done", "dropped")
-    ]
-
-
-def bereken_dekking(projecten):
-    """Hoeveel van de velden waar de rest op rekent, is uberhaupt ingevuld.
-
-    Dit staat bovenaan de sectie omdat een lege lijst eronder anders niet te lezen is:
-    "geen botsingen" en "geen data om botsingen uit af te leiden" zien er identiek uit.
-    """
-    taken = [t for p in projecten for t in open_taken(p)]
-    return {
-        "taken": len(taken),
-        "met_due": sum(1 for t in taken if als_datum(t.get("due"))),
-        "met_owner": sum(1 for t in taken if t.get("owner")),
-        "projecten": len(projecten),
-        "met_deadline": sum(1 for p in projecten if als_datum(p.get("deadline"))),
-    }
-
-
-def bereken_concentratie(projecten):
-    """Verdeling van next_step_owner. Vuurt boven CONCENTRATIE_DREMPEL.
-
-    Dit is het antwoord op "botsen er projecten met elkaar". Meestal niet - ze botsen
-    allemaal met dezelfde persoon.
-    """
-    verdeling = {}
-    for p in projecten:
-        eigenaar = p.get("next_step_owner") or "niemand"
-        verdeling[eigenaar] = verdeling.get(eigenaar, 0) + 1
-    totaal = len(projecten) or 1
-    gesorteerd = sorted(verdeling.items(), key=lambda x: -x[1])
-    overschrijders = [
-        (naam_, n) for naam_, n in gesorteerd if n / totaal > CONCENTRATIE_DREMPEL
-    ]
-    return gesorteerd, overschrijders, totaal
-
-
-def bereken_onbeheerd(projecten):
-    """Open taken zonder eigenaar, per project. De werklijst voor maandag."""
-    rijen = []
-    for p in projecten:
-        zonder = [t for t in open_taken(p) if not t.get("owner")]
-        if zonder:
-            rijen.append((naam(p), len(zonder)))
-    return sorted(rijen, key=lambda x: -x[1])
-
-
-def bereken_ongedateerd(projecten):
-    """Open taken zonder due-datum, per project."""
-    rijen = []
-    for p in projecten:
-        zonder = [t for t in open_taken(p) if not als_datum(t.get("due"))]
-        if zonder:
-            rijen.append((naam(p), len(zonder)))
-    return sorted(rijen, key=lambda x: -x[1])
-
-
-def bereken_overdue(projecten):
-    """Taken en projecten waarvan de datum voorbij is.
-
-    Toont dagen, niet de datum: "161 dagen" leest als alarm, "2026-03-09" niet.
-    """
-    taken, deadlines = [], []
-    for p in projecten:
-        for t in open_taken(p):
-            d = als_datum(t.get("due"))
-            if d and d < VANDAAG:
-                taken.append(((VANDAAG - d).days, naam(p), t.get("task"),
-                              t.get("owner") or "niemand"))
-        d = als_datum(p.get("deadline"))
-        if d and d < VANDAAG:
-            deadlines.append(((VANDAAG - d).days, naam(p)))
-    return sorted(taken, key=lambda x: -x[0]), sorted(deadlines, key=lambda x: -x[0])
-
-
-def bereken_ketens(projecten):
-    """Bouwt de afhankelijkheidsgraaf uit blocked_by.
-
-    Rapporteert datafouten (onbekende slug, zelfverwijzing, cyclus) apart en breekt een
-    cyclus nooit stil: een graaf die zichzelf stilletjes repareert, verbergt precies de
-    fout die je wilt zien.
-    """
-    per_slug = {p["_slug"]: p for p in projecten}
-    blokkeert = {}   # slug -> [(afhankelijke slug, until)]
-    fouten = []
-
-    for p in projecten:
-        for entry in (p.get("blocked_by") or []):
-            if not isinstance(entry, dict):
-                fouten.append(f"{p['_slug']}: blocked_by-item is geen mapping "
-                              f"(verwacht `project:` en `until:`)")
-                continue
-            doel = entry.get("project")
-            until = entry.get("until")
-            if not doel:
-                fouten.append(f"{p['_slug']}: blocked_by-item zonder `project:`")
-                continue
-            if not until:
-                fouten.append(f"{p['_slug']}: blocked_by naar {doel} zonder `until:` - "
-                              f"zonder die stap blijft dit eeuwig geblokkeerd op papier")
-            if doel == p["_slug"]:
-                fouten.append(f"{p['_slug']}: blocked_by verwijst naar zichzelf")
-                continue
-            if doel not in per_slug:
-                # Kan een afgerond en gearchiveerd project zijn: dan is de blokkade weg.
-                fouten.append(f"{p['_slug']}: blocked_by verwijst naar onbekend project "
-                              f"`{doel}` (afgerond, hernoemd of typefout?)")
-                continue
-            if (per_slug[doel].get("status") or "") in ("done", "archived"):
-                continue  # opgelost, telt niet als blokkade
-            blokkeert.setdefault(doel, []).append((p["_slug"], until or "?"))
-
-    # Cyclusdetectie over de opgebouwde graaf.
-    naar = {}
-    for doel, afhankelijken in blokkeert.items():
-        for slug, _ in afhankelijken:
-            naar.setdefault(slug, []).append(doel)
-    kleur = {}
-
-    def bezoek(slug, pad):
-        kleur[slug] = "grijs"
-        for volgende in naar.get(slug, []):
-            if kleur.get(volgende) == "grijs":
-                fouten.append("cyclus in blocked_by: " + " -> ".join(pad + [volgende]))
-            elif kleur.get(volgende) != "zwart":
-                bezoek(volgende, pad + [volgende])
-        kleur[slug] = "zwart"
-
-    for slug in list(naar):
-        if kleur.get(slug) != "zwart":
-            bezoek(slug, [slug])
-
-    gesorteerd = sorted(blokkeert.items(), key=lambda x: -len(x[1]))
-    return gesorteerd, fouten, per_slug
-
-
-def bereken_prioriteitsdruk(projecten):
-    """Hoeveel projecten staan op Nu, en hoeveel daarvan zijn verouderd."""
-    nu = [p for p in projecten if p.get("priority") == "now"]
-    verouderd = [
-        p for p in nu
-        if (als_datum(p.get("updated")) or VANDAAG) < VANDAAG - timedelta(days=VEROUDERD_NA)
-    ]
-    return nu, verouderd
-
-
-def lees_ritmen():
-    """Wanneer draaide de laatste maandagplanning en vrijdag wrap-up.
-
-    De enige plek waar dit script buiten project.yaml leest. Zie de moduledocstring.
-    """
-    resultaat = {}
-    for soort in ("maandag", "vrijdag"):
-        patroon = os.path.join(ROOT, "company", "rituals", "*", f"W*-{soort}.md")
-        datums = []
-        for pad in glob.glob(patroon):
-            with open(pad, encoding="utf-8") as f:
-                kop = f.read(400)
-            gevonden = re.search(r"^datum:\s*(\d{4}-\d{2}-\d{2})", kop, re.MULTILINE)
-            if gevonden:
-                d = als_datum(gevonden.group(1))
-                if d:
-                    datums.append(d)
-        resultaat[soort] = max(datums) if datums else None
-    return resultaat
 
 
 def main():
@@ -284,30 +74,10 @@ def main():
             deadlines.append((d, p))
     deadlines.sort(key=lambda x: x[0])
 
-    # Beslissingen en taken
-    beslissingen, taken_per_persoon = [], {}
-    for p in projecten:
-        for t in p.get("tasks") or []:
-            if t.get("status") in ("done", "dropped"):
-                continue
-            eigenaar = t.get("owner") or "niemand toegewezen"
-            taken_per_persoon.setdefault(eigenaar, 0)
-            taken_per_persoon[eigenaar] += 1
-            if t.get("needs_decision"):
-                beslissingen.append((p.get("title") or p["_slug"], t.get("task")))
-
-    verouderd = [
-        p for p in projecten
-        if p.get("status") == "active"
-        and (als_datum(p.get("updated")) or VANDAAG) < VANDAAG - timedelta(days=VEROUDERD_NA)
-    ]
-
-    queue = os.path.join(ROOT, "company", "canon-queue.md")
-    open_canon = 0
-    if os.path.exists(queue):
-        with open(queue, encoding="utf-8") as f:
-            inhoud = f.read().split("## Afgehandeld")[0]
-        open_canon = inhoud.count("### V-")
+    beslissingen = beslissingen_open(projecten)
+    per_persoon = taken_per_persoon(projecten)
+    verouderd = bereken_verouderd(projecten)
+    open_canon = tel_open_canon()
 
     uit = [
         "# BOARD - Haus von FEB",
@@ -365,8 +135,8 @@ def main():
         uit.append("*geen*\n")
 
     uit += ["## Open taken per persoon", ""]
-    if taken_per_persoon:
-        for persoon, aantal in sorted(taken_per_persoon.items(), key=lambda x: -x[1]):
+    if per_persoon:
+        for persoon, aantal in sorted(per_persoon.items(), key=lambda x: -x[1]):
             uit.append(f"- {persoon}: {aantal}")
         uit.append("")
     else:
@@ -382,9 +152,6 @@ def main():
     nu_projecten, nu_verouderd = bereken_prioriteitsdruk(projecten)
 
     uit += ["---", "", "## Botsingen en belasting", "", "### Dekking", ""]
-
-    def pct(deel, totaal):
-        return f"{round(100 * deel / totaal)}%" if totaal else "n.v.t."
 
     uit += [
         "| Veld | Ingevuld | Dekking |",

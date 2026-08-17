@@ -1,0 +1,12 @@
+name: Farah
+slug: farah
+type: internal
+role: "zaakvoerder creatief"
+organization: "Haus von FEB"
+channel_preference: null
+toegang: administrator
+tags: [zaakvoerder, creatief]
+
+notes:
+  - date: 2026-08-17
+    text: "Aangemaakt omdat het rollenmodel een persoonsbestand nodig heeft. Rol en functieomschrijving komen uit company.yaml; verder is hier niets ingevuld wat niet geverifieerd is."

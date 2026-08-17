@@ -1,0 +1,12 @@
+name: Tore
+slug: tore
+type: internal
+role: "zaakvoerder operations"
+organization: "Haus von FEB"
+channel_preference: null
+toegang: administrator
+tags: [zaakvoerder, operations, akira]
+
+notes:
+  - date: 2026-08-17
+    text: "Aangemaakt omdat het rollenmodel een persoonsbestand nodig heeft. Rol en functieomschrijving komen uit company.yaml; verder is hier niets ingevuld wat niet geverifieerd is."

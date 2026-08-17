@@ -15,3 +15,8 @@ Thumbs.db
 
 # Scratch: lokaal denkwerk dat geen bedrijfsgeheugen is
 scratch/
+
+# Gegenereerde kijklaag. Wordt gebouwd en gepubliceerd door publish-views.yml,
+# nooit gecommit - anders staan de bedragen uit de administrator-uitvoer alsnog
+# in de git-geschiedenis van een repo die meer mensen kunnen lezen.
+dist/
