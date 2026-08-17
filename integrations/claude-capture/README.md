@@ -50,21 +50,19 @@ blijft de Custom GPT de route.
 
 ## Rollen: wie krijgt wat
 
-Akira staat sinds 2026-08-16 in de organisatie `Akira-Brain` en blijft privé. Dat was
-een voorwaarde voor dit pad: op een private repo van een persoonlijk account laat GitHub
-geen read-only collaborators toe, waardoor iedereen die je toevoegt schrijfrechten op
-alle bestanden krijgt. In een organisatie kan het wel per persoon:
+**Zie `system/docs/TOEGANG.md`.** Hier stond tot 2026-08-17 een tabel die Farah, studenten
+en stagiairs de GitHub-rol Read gaf. Die is verwijderd omdat ze in strijd was met de eis
+dat alleen Tore en Farah bij prijzen mogen: GitHub-leesrecht geldt altijd voor de hele
+repo, en die bevat `knowledge/pricing/` en de prijsvoorstellen in `canon-queue.md`.
 
-| Wie | Rol | Mag |
-|---|---|---|
-| Farah, studenten, stagiairs | **Read** | issues aanmaken (captures), bestanden lezen, niets pushen |
-| Luna, als zij captures beheert | **Triage** | daarnaast labelen en sluiten |
-| Tore | **Admin** | alles, inclusief de routering |
+Alleen Tore en Farah hebben repo-toegang. Luna en stagiairs hebben géén GitHub-account;
+zij praten tegen Chatty en lezen de gegenereerde ateliersite, waar bedragen niet in
+voorkomen omdat ze er nooit in geschreven worden.
 
-Met rol Read maakt het niet meer uit welke MCP-URL iemand in zijn Claude plakt: ook de
-volledige server kan dan geen bestanden schrijven, omdat het account het niet mag. De
-grens verschuift van "goed geconfigureerd" naar "GitHub staat het niet toe", en dat is
-de enige plek waar hij thuishoort.
+Akira staat sinds 2026-08-16 in de organisatie `Akira-Brain` en blijft privé. Dat was een
+voorwaarde voor dit pad: op een private repo van een persoonlijk account laat GitHub geen
+read-only collaborators toe, waardoor iedereen die je toevoegt schrijfrechten op alle
+bestanden krijgt.
 
 ## Wat dit is
 

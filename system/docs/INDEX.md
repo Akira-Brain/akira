@@ -21,6 +21,8 @@ de repo te doorzoeken. Alles wat niet in `AGENTS.md` staat, vind je hier.
 | Waarom hebben we dit besloten? | `company/decisions/{jaar}/` |
 | Waar staat dat document? | `integrations/drive-map.yaml` |
 | Wat is er net binnengekomen? | `{tenant}/inbox/` |
+| Wie mag wat zien? | `system/docs/TOEGANG.md`, regels in `system/access.yaml` |
+| Wat ziet het team zelf? | de gegenereerde kijklaag, `system/scripts/generate-views.py` |
 
 ## Hoe doe ik...
 
@@ -43,6 +45,10 @@ aanmaken: kopieer uit `system/templates/`.
 
 ## Regels
 
-`system/policies/` bevat zeven policies. De harde vier die je altijd moet kennen:
-`canon-only-via-queue`, `never-invent-pricing`, `client-isolation`,
-`sensitive-data-to-vault`.
+`system/policies/` bevat acht policies. De harde vijf die je altijd moet kennen:
+`canon-only-via-queue`, `never-invent-pricing`, `pricing-is-need-to-know`,
+`client-isolation`, `sensitive-data-to-vault`.
+
+De laatste twee prijsregels lijken op elkaar en zijn het niet: `never-invent-pricing` gaat
+over prijzen die niet bestaan (verzin er geen), `pricing-is-need-to-know` over prijzen die
+wel bestaan (deel ze niet met iedereen).

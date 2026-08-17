@@ -1,0 +1,95 @@
+name: Publish views
+
+# Bouwt de kijklaag en publiceert hem naar twee gescheiden Cloudflare Pages-projecten:
+# een voor het atelier, een voor de zaakvoerders.
+#
+# WAAROM TWEE SITES EN NIET EEN MET RECHTEN. GitHub kan geen deel van een repo verbergen -
+# rechten gelden per repo, nooit per map - en GitHub Pages publiceert een private repo
+# gewoon publiek op alles onder Enterprise Cloud. Een scheiding die pas bij het lezen
+# gebeurt is daarmee geen optie. Ze gebeurt hier, bij het bouwen: de ateliersite bevat
+# geen bedragen omdat ze er nooit in geschreven zijn. Er is geen filter om te omzeilen en
+# geen payload waar de data alsnog in zit.
+#
+# DE TEST IS EEN POORT, GEEN RAPPORT. Faalt test-geen-lek.py, dan stopt de run en wordt er
+# niets gepubliceerd - ook de administratorsite niet. Dat is bewust streng: als de
+# scheiding stuk is, weet je niet welke kant hij op stuk is.
+#
+# dist/ wordt nooit gecommit. Het staat in .gitignore, en de commit-stappen van
+# capture-intake en meeting-process werken met een expliciete allowlist waar het niet in
+# staat. Zou de administratoruitvoer ooit gecommit worden, dan stonden de bedragen alsnog
+# in de git-geschiedenis.
+
+on:
+  workflow_dispatch: {}
+  # Na elke geslaagde verwerking van een capture of vergadering, want dan is de bron
+  # veranderd. Niet op een schema: een site die elk uur opnieuw gebouwd wordt zonder dat
+  # er iets wijzigde, verbrandt Actions-minuten aan een identiek resultaat.
+  workflow_run:
+    workflows: ["Capture intake", "Meeting process"]
+    types: [completed]
+
+concurrency:
+  group: publish-views
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    # Bij workflow_run ook draaien als de bron faalde heeft geen zin: dan is er niets
+    # nieuws om te tonen en publiceren we een halve verwerking.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Python en pyyaml
+        run: python -m pip install --quiet pyyaml
+
+      - name: Genereer BOARD.md
+        # Het board is de bron voor de gezondheidscijfers op de site. Eerst verversen,
+        # dan pas lezen - de skills doen hetzelfde, om dezelfde reden.
+        run: python system/scripts/generate-board.py "$(
+          gh issue list --label capture --state open --json number --jq 'length' 2>/dev/null || echo onbekend
+          )"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Bouw de kijklaag
+        run: python system/scripts/generate-views.py
+
+      - name: Controleer dat er geen bedragen in de ateliersite staan
+        # Faalt deze stap, dan stopt de run hier. Niet doorgaan met alleen de
+        # administratorsite: als de scheiding stuk is, wil je weten waarom voordat er
+        # iets live gaat.
+        run: python system/scripts/test-geen-lek.py
+
+      - name: Publiceer de ateliersite
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist/atelier --project-name=akira-atelier
+
+      - name: Publiceer de administratorsite
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist/administrator --project-name=akira-administrator
+
+      - name: Samenvatting
+        run: |
+          {
+            echo "### Kijklaag gepubliceerd"
+            echo ""
+            echo "| Site | Pagina's |"
+            echo "|---|---|"
+            echo "| atelier | $(find dist/atelier -name '*.html' | wc -l) |"
+            echo "| administrator | $(find dist/administrator -name '*.html' | wc -l) |"
+            echo ""
+            echo "Toegang staat in Cloudflare Access, niet hier. Zie system/docs/TOEGANG.md."
+          } >> "$GITHUB_STEP_SUMMARY"

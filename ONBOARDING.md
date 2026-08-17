@@ -40,6 +40,37 @@ niets van op te volgen.
 
 ---
 
+## Zelf kijken
+
+Praten is de manier om iets *in* Akira te krijgen. Om te zien wat erin zit is er een
+website. Je hoeft daar niets voor te installeren en geen account te maken: je vult je
+e-mailadres in, krijgt een code toegestuurd, en bent binnen.
+
+Wat je er vindt:
+
+| Pagina | Waarvoor |
+|---|---|
+| Het bord | Wat er loopt, wat er vastzit, welke deadlines eraan komen |
+| Projecten | Per project de taken, de geschiedenis en waar het op wacht |
+| Mensen | Wat er op wiens lijst staat |
+| Wat we weten | Wat vaststaat, en wat we alleen nog vermoeden |
+| Wat er binnenkwam | Welke gesprekken zijn verwerkt |
+| De kaart | Hoe informatie hier verdeeld wordt - lees deze een keer rustig door |
+| Wat kan ik vragen | De vragen die je kunt stellen, in gewone taal |
+
+**Begin bij De kaart.** Die legt uit welke vakjes er zijn en wat waar terechtkomt. Wie dat
+een keer gezien heeft, weet daarna ook wat hij kan vragen - en dat is precies waarom die
+pagina er staat.
+
+De site is om te lezen. Wijzigen doe je door het te zeggen.
+
+Twee dingen die je zult merken. **Bedragen staan er niet op**, tenzij je zaakvoerder bent;
+op de kaart zie je wél welke vakjes er zijn die je niet kunt openen, zodat je weet wat je
+aan wie kunt vragen. En **de pagina's zijn zo actueel als de laatste keer dat ze gebouwd
+zijn** - bovenaan staat wanneer dat was.
+
+---
+
 ## Wat je moet weten
 
 **Zeg het gewoon zoals het is.** Half afgemaakte zinnen, twijfels, "ik weet niet meer

@@ -41,6 +41,11 @@ wrap-ups per ISO-week), `BOARD.md`, `canon-queue.md`.
 | Hoog | alleen voorstellen via `canon-queue.md` | `knowledge/`, `policies/`, `company.yaml`, pricing, canon-rakende `decisions/` |
 | Verboden | nooit | persoonsgevoelige klantdata, contracten, financiele documenten, credentials |
 
+Schrijven is niet het enige dat begrensd is. **Bedragen zijn ook in het lezen beperkt:**
+offertes, tarieven en marges zijn er alleen voor rol `administrator` (Tore en Farah).
+Weet je niet zeker met wie je praat, noem dan geen bedrag. Zie
+`system/policies/pricing-is-need-to-know.md` en `system/access.yaml`.
+
 Verboden materiaal gaat naar de Drive-vault; de repo houdt alleen een pointer. Kom je
 gevoelige inhoud tegen in een capture, vervang die dan door een vault-verwijzing en meld
 dat expliciet in de capture.
