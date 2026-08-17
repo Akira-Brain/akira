@@ -40,6 +40,10 @@ rollen:
       - company/working/learnings/*.md
       - company/decisions/**
       - company/rituals/**
+      # De skills zijn de werkwijzen, geen bedrijfsdata. Weten wat je kunt vragen is
+      # precies de eis "het mag geen blackbox zijn" - iemand die niet weet dat de
+      # maandagplanning bestaat, vraagt er ook nooit om.
+      - system/skills/*.md
     exclude:
       # Prijzencanon. De directe reden dat dit bestand bestaat.
       - company/knowledge/pricing/**
