@@ -4,7 +4,7 @@
 Bron: alle `project.yaml` in `projects/active/`, via
 `system/scripts/generate-board.py`.
 
-Laatst gegenereerd: 2026-08-16
+Laatst gegenereerd: 2026-08-17
 
 ---
 
@@ -12,6 +12,7 @@ Laatst gegenereerd: 2026-08-16
 
 | Project | Volgende stap | Bij wie |
 |---|---|---|
+| **Akira - het AI operating system zelf** | Ontwerp de projectmanagement-laag: welke commands, welke views, en hoe de drie vaste vergadertypes ondersteund worden | tore |
 | **AS Adventure - Second Life campagne 2026** | Bevestigen actuele status: deze planning dateert van 2026-02-13 met shoot medio maart en live-datum begin-half april 2026, wat al voor de huidige systeemdatum (2026-08-16) ligt | tore |
 | **Boek - verschijnt 7 oktober 2026** | Bevestigen wat er nog moet gebeuren richting lancering; lanceermomentum bepaalt de timing van de online course | farah |
 | **Cannes - rode loper-aanwezigheid 12 mei 2027** | URGENT status-check: de interne boekingsdeadline (juni 2026, ongeveer een jaar vooraf) ligt al voor de huidige systeemdatum (2026-08-16) - navragen of geboekt is, en zo niet, of het venster voor 2027 nog haalbaar is | tore |
@@ -49,10 +50,13 @@ Laatst gegenereerd: 2026-08-16
 
 | Datum | Over | Project |
 |---|---|---|
-| 2026-08-22 | 6 dagen | Merkenpitch Focus Advertising |
+| 2026-08-22 | 5 dagen | Merkenpitch Focus Advertising |
 
 ## Beslissingen die op iemand wachten
 
+- **Akira - het AI operating system zelf**: Ontwerp de projectmanagement-laag: commands, views, templates
+- **Akira - het AI operating system zelf**: Beslissen hoe toegang gesegmenteerd wordt: team inzicht in de database, maar pricing beperkt
+- **Akira - het AI operating system zelf**: Zes openstaande canon-voorstellen goedkeuren of afwijzen (V-2026-001 t/m 006)
 - **Bel & Bo - tv-spot afgesprongen, heraanpak via consultancy**: Beslissen of een opdracht aan lagere prijs als opstapje aanvaardbaar is en onder welke voorwaarde
 - **Boek - verschijnt 7 oktober 2026**: Bepalen hoe de boeklancering wordt gebruikt als haakje voor de online course
 - **Cannes - rode loper-aanwezigheid 12 mei 2027**: Locatie/showroom boeken in Cannes voor 2027
@@ -71,7 +75,7 @@ Laatst gegenereerd: 2026-08-16
 ## Open taken per persoon
 
 - niemand toegewezen: 32
-- tore: 12
+- tore: 19
 - farah: 5
 - luna: 1
 
@@ -81,7 +85,7 @@ Laatst gegenereerd: 2026-08-16
 
 | Meting | Aantal |
 |---|---|
-| Actieve projecten | 16 |
+| Actieve projecten | 17 |
 | Projecten met verouderde status (>14 dagen) | 13 |
 | Ongerouteerde captures | 0 |
 | Openstaande canon-voorstellen | 6 |

@@ -1,0 +1,69 @@
+project: akira-ai-os
+title: "Akira - het AI operating system zelf"
+tenant: company
+status: active
+priority: now
+next_step: "Ontwerp de projectmanagement-laag: welke commands, welke views, en hoe de drie vaste vergadertypes ondersteund worden"
+next_step_owner: tore
+updated: 2026-08-17
+
+people: [farah, luna]
+waiting_for: null
+deadline: null
+tags: [systeem, infrastructuur, projectmanagement]
+
+commercial:
+  quoted: null
+  accepted: null
+  status: n.v.t.
+
+tasks:
+  - task: "Ontwerp de projectmanagement-laag: commands, views, templates"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: true
+  - task: "Ontwerp ondersteuning voor de drie vergadertypes: maandag planning, vrijdag wrap-up, client kick-off"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Beslissen hoe toegang gesegmenteerd wordt: team inzicht in de database, maar pricing beperkt"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: true
+  - task: "Offer-skill uit Tore's persoonlijke Claude-project overbrengen naar system/skills/"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Informatie-architectuur leesbaar maken voor het hele team (welke vakjes, wat komt waar)"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: false
+  - task: "Zes openstaande canon-voorstellen goedkeuren of afwijzen (V-2026-001 t/m 006)"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: true
+  - task: "Plaud-automatisering: gepauzeerd tot het ontwerp er ligt"
+    owner: tore
+    due: null
+    status: open
+    needs_decision: false
+
+files: {}
+
+# Dit project ontbrak tot 2026-08-17: het systeem dat zestien projecten bijhield, hield
+# zichzelf niet bij. Aangemaakt naar aanleiding van Tore's spraaknotitie van die ochtend,
+# die de richting verlegt van infrastructuur naar bruikbaarheid.
+#
+# Kernkritiek uit die notitie: de infrastructuur ligt er, maar de meerwaarde nog niet -
+# niet gebruiksvriendelijk, niet inzichtelijk. Wat centraal moet staan is
+# projectmanagement: wat moet er gebeuren, wanneer, met welke prioriteit.
+#
+# Bewust gepauzeerd: de Plaud-automatisering (import + verwerking). De workflows bestaan
+# en zijn getest, maar wachten op het ontwerp van de projectmanagement-laag voordat er
+# meer automatische informatiestromen bijkomen.
