@@ -29,7 +29,8 @@ integrations/ pointers naar Drive en externe systemen, nooit inhoud
 ```
 
 Per tenant: `knowledge/` (alleen canon), `working/` (hypotheses/learnings), `projects/`,
-`ideas/`, `people/`, `clients/`, `decisions/`, `inbox/`, `BOARD.md`, `canon-queue.md`.
+`ideas/`, `people/`, `clients/`, `decisions/`, `inbox/`, `rituals/` (weekplannen en
+wrap-ups per ISO-week), `BOARD.md`, `canon-queue.md`.
 
 ## Schrijfzones
 

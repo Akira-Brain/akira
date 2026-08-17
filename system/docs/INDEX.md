@@ -27,6 +27,9 @@ de repo te doorzoeken. Alles wat niet in `AGENTS.md` staat, vind je hier.
 | Taak | Skill |
 |---|---|
 | Ochtendoverzicht geven | `system/skills/daily-brief.md` |
+| Maandagplanning begeleiden | `system/skills/monday-planning.md` |
+| Vrijdag wrap-up doen | `system/skills/friday-wrap-up.md` |
+| Klantopdracht opstarten | `system/skills/client-kickoff.md` |
 | Spraakdump verwerken | `system/skills/meeting-processing.md` |
 | Captures van Farah routeren | `system/skills/capture-intake.md` |
 | Projectstatus bijwerken | `system/skills/project-update.md` |
