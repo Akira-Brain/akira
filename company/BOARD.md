@@ -81,6 +81,73 @@ Laatst gegenereerd: 2026-08-17
 
 ---
 
+## Botsingen en belasting
+
+### Dekking
+
+| Veld | Ingevuld | Dekking |
+|---|---|---|
+| Taken met een eigenaar | 25 van 57 | 44% |
+| Taken met een datum | 2 van 57 | 4% |
+| Projecten met een deadline | 5 van 17 | 29% |
+
+Staat er hieronder "geen", lees dat dan samen met deze tabel. Bij een lage dekking betekent een lege lijst eerder "niet meetbaar" dan "geen probleem". Datumanalyse is pas betrouwbaar boven 50% gedateerde taken, verdelingsanalyse boven 80% toegewezen taken.
+
+### Eigenaarsconcentratie
+
+- tore: 14 van 17 projecten (82%)
+- farah: 3 van 17 projecten (18%)
+
+**tore is next_step_owner op 14 van 17 projecten (82%) - de drempel is 50%. Elk project dat vooruit moet, wacht op dezelfde persoon.**
+
+### Taken zonder eigenaar
+
+32 open taken hebben geen eigenaar. Dit is de werklijst voor de maandagplanning.
+
+| Project | Taken zonder eigenaar |
+|---|---|
+| Cannes - rode loper-aanwezigheid 12 mei 2027 | 4 |
+| Doelgroep en sales discovery - high visible professionals | 4 |
+| Festival showroom - 10 A-profielen, seizoen 2026 | 3 |
+| Stock digitaliseren in Checkroom | 3 |
+| Stock sale 2026 - privé (juni) en breed publiek (najaar) | 3 |
+| Nieuwe website | 3 |
+| Bel & Bo - tv-spot afgesprongen, heraanpak via consultancy | 2 |
+| Consultancy-aanbod voor merken ontwikkelen | 2 |
+| Partnernetwerk opbouwen | 2 |
+| Herpositionering - Starmaker voor mensen en merken | 2 |
+| Boek - verschijnt 7 oktober 2026 | 1 |
+| Groen - aanvraag stijladvies/beeldcreatie (Ayman en Lien) | 1 |
+| Locomotieven - prospectie bij agencies en bureaus | 1 |
+| Private styling met outfitverhuur - dienst en prijszetting | 1 |
+
+### Taken zonder datum
+
+55 open taken hebben geen `due`. Zolang dat zo is, valt er niet op te plannen.
+
+- Akira - het AI operating system zelf: 7
+- Cannes - rode loper-aanwezigheid 12 mei 2027: 4
+- Doelgroep en sales discovery - high visible professionals: 4
+- Partnernetwerk opbouwen: 4
+- Herpositionering - Starmaker voor mensen en merken: 4
+- (en 11 andere projecten)
+
+### Over datum heen
+
+- **161 dagen** - AS Adventure - Second Life campagne 2026: Selectiedag stock uitvoeren met AS Adventure (farah)
+
+### Ketens
+
+- **positionering-starmaker blokkeert 2 projecten:** bel-en-bo (wacht op: scenariokeuze), website (wacht op: scenariokeuze en master copy document). Dit project is 32 dagen niet bijgewerkt.
+
+### Prioriteitsdruk
+
+**8 projecten staan op Nu, de drempel is 5.** Daarvan zijn er 7 langer dan 14 dagen niet bijgewerkt: "nu" betekent op dit board dan weinig meer.
+
+De vrijdag wrap-up is het moment waarop deze lijst opnieuw gekozen wordt.
+
+---
+
 ## Gezondheid
 
 | Meting | Aantal |
@@ -89,6 +156,8 @@ Laatst gegenereerd: 2026-08-17
 | Projecten met verouderde status (>14 dagen) | 13 |
 | Ongerouteerde captures | 0 |
 | Openstaande canon-voorstellen | 6 |
+| Laatste maandagplanning | geen gevonden |
+| Laatste vrijdag wrap-up | geen gevonden |
 
 Lopen deze getallen structureel op, dan is dat het signaal om te versimpelen,
 niet om uit te breiden.

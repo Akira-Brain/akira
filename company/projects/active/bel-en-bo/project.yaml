@@ -13,6 +13,10 @@ waiting_for: "eigen scenariokeuze in positionering-starmaker; Jasmijn wil pas da
 deadline: null
 tags: [merken, consultancy, rebranding]
 
+blocked_by:
+  - project: positionering-starmaker
+    until: "scenariokeuze"
+
 commercial:
   quoted: 6000
   accepted: null

@@ -16,6 +16,12 @@ waiting_for: null
 deadline: null
 tags: []
 
+# Wacht dit project op een stap in een ander project? Dan hier, met de stap erbij:
+#   blocked_by:
+#     - project: positionering-starmaker
+#       until: "scenariokeuze"
+blocked_by: []
+
 commercial:
   quoted: null
   accepted: null

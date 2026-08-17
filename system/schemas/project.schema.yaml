@@ -20,6 +20,22 @@ waiting_for: "bevestiging management over tourdata"   # voedt 'clients waiting' 
 deadline: 2026-09-05
 tags: [styling, tour, muziek]
 
+# --- afhankelijkheden (optioneel) ---
+# blocked_by legt vast dat dit project pas verder kan als een ander project een concrete
+# stap zet. Het is een verwijzing, geen automatisme: het board rapporteert ketens maar
+# zet NOOIT zelf status: blocked. Dat blijft een menselijk oordeel.
+#
+# `until` is verplicht en beschrijft welke stap dat is. Zonder dat veld blijft een project
+# eeuwig geblokkeerd op papier terwijl de blokkade in werkelijkheid al weg is. Beide echte
+# afhankelijkheden hier wachten op een BESLISSING BINNEN een ander project, niet op het
+# aflopen ervan: positionering-starmaker haalt voorlopig geen status: done, maar de
+# scenariokeuze kan volgende week landen.
+#
+# Wordt het doelproject done of archived, dan telt de blokkade automatisch als opgelost.
+blocked_by:
+  - project: positionering-starmaker
+    until: "scenariokeuze"
+
 # --- commercieel (optioneel) ---
 # Bedragen mogen hier. Persoonsgevoelige of contractuele details nooit.
 commercial:

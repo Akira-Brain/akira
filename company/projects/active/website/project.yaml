@@ -12,6 +12,10 @@ waiting_for: "scenariokeuze en master copy; de website is een medium, geen start
 deadline: null
 tags: [merk, communicatie]
 
+blocked_by:
+  - project: positionering-starmaker
+    until: "scenariokeuze en master copy document"
+
 commercial:
   quoted: null
   accepted: null
