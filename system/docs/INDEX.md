@@ -22,6 +22,7 @@ de repo te doorzoeken. Alles wat niet in `AGENTS.md` staat, vind je hier.
 | Waar staat dat document? | `integrations/drive-map.yaml` |
 | Wat is er net binnengekomen? | `{tenant}/inbox/` |
 | Wie mag wat zien? | `system/docs/TOEGANG.md`, regels in `system/access.yaml` |
+| Hoe draai ik dit lokaal? | `ONTWIKKELEN.md` |
 | Wat ziet het team zelf? | de gegenereerde kijklaag, `system/scripts/generate-views.py` |
 
 ## Hoe doe ik...

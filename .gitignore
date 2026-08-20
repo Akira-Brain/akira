@@ -20,3 +20,7 @@ scratch/
 # nooit gecommit - anders staan de bedragen uit de administrator-uitvoer alsnog
 # in de git-geschiedenis van een repo die meer mensen kunnen lezen.
 dist/
+
+# Python bytecode - machinespecifiek, hoort niet in de repo
+__pycache__/
+*.pyc

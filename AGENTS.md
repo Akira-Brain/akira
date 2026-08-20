@@ -83,6 +83,7 @@ regenereer `BOARD.md`, commit. Las je alleen, maak dan geen handoff.
 | Nieuw bestand aanmaken | `system/templates/` |
 | Regels bij een handeling | `system/policies/` en `{tenant}/policies/` |
 | Navigatie | `system/docs/INDEX.md` |
+| Werken aan het systeem zelf | `ONTWIKKELEN.md` |
 | Waar een document staat | `integrations/drive-map.yaml` |
 
 ## Skills
